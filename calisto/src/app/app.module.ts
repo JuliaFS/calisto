@@ -6,15 +6,27 @@ import { AppComponent } from './app.component';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment.development';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
+import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
+import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
