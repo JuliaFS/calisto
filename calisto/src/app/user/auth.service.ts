@@ -15,6 +15,8 @@ export class AuthService {
     this.fireAuth.signInWithEmailAndPassword(email, password).then((res) => {
       localStorage.setItem('token', 'true');
 
+      console.log('from auth service: ' + JSON.stringify(res.user));
+
       if(res.user?.emailVerified == true){
         this.router.navigate(['/home']);
       } else {

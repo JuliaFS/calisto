@@ -12,6 +12,9 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
+import { HeaderComponent } from './core/header/header.component';
+import { FooterComponent } from './core/footer/footer.component';
+import { ErrorComponent } from './core/error/error.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { VerifyEmailComponent } from './user/verify-email/verify-email.component
     RegisterComponent,
     HomeComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    HeaderComponent,
+    FooterComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
