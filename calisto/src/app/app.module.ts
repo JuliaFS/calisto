@@ -17,7 +17,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { ErrorComponent } from './core/error/error.component';
 import { CompanyListComponent } from './company/company-list/company-list.component';
 import { AddCompanyComponent } from './company/add-company/add-company.component';
-import { DeleteStudentComponent } from './company/delete-student/delete-student.component';
+import { DeleteCompanyComponent } from './company/delete-company/delete-company.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { DeleteStudentComponent } from './company/delete-student/delete-student.
     ErrorComponent,
     CompanyListComponent,
     AddCompanyComponent,
-    DeleteStudentComponent
+    DeleteCompanyComponent
   ],
   imports: [
     BrowserModule,
