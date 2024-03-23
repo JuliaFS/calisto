@@ -15,6 +15,9 @@ import { VerifyEmailComponent } from './user/verify-email/verify-email.component
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { ErrorComponent } from './core/error/error.component';
+import { CompanyListComponent } from './company/company-list/company-list.component';
+import { AddCompanyComponent } from './company/add-company/add-company.component';
+import { DeleteStudentComponent } from './company/delete-student/delete-student.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { ErrorComponent } from './core/error/error.component';
     VerifyEmailComponent,
     HeaderComponent,
     FooterComponent,
-    ErrorComponent
+    ErrorComponent,
+    CompanyListComponent,
+    AddCompanyComponent,
+    DeleteStudentComponent
   ],
   imports: [
     BrowserModule,
