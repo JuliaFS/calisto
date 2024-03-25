@@ -6,33 +6,32 @@ import { AppComponent } from './app.component';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment.development';
-import { LoginComponent } from './user/login/login.component';
-import { RegisterComponent } from './user/register/register.component';
+//import { LoginComponent } from './user/login/login.component';
+//import { RegisterComponent } from './user/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
-import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
-import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
+//import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
+//import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { ErrorComponent } from './core/error/error.component';
 import { CompanyListComponent } from './company/company-list/company-list.component';
 import { AddCompanyComponent } from './company/add-company/add-company.component';
 import { DeleteCompanyComponent } from './company/delete-company/delete-company.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
+    // LoginComponent,
+    // RegisterComponent,
     HomeComponent,
-    ForgotPasswordComponent,
-    VerifyEmailComponent,
+    // ForgotPasswordComponent,
+    // VerifyEmailComponent,
     HeaderComponent,
     FooterComponent,
     ErrorComponent,
-    CompanyListComponent,
-    AddCompanyComponent,
-    DeleteCompanyComponent
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

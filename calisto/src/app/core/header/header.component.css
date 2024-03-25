@@ -4,6 +4,11 @@ header{
     background-color: #4257a2;
 }
 
+header nav{
+    display: flex;
+    justify-content: flex-end;
+}
+
 header h1{
     width: 100%;
     color: #fff;

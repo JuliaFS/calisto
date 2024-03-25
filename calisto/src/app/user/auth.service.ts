@@ -15,7 +15,7 @@ export class AuthService {
     this.fireAuth.signInWithEmailAndPassword(email, password).then((res) => {
       localStorage.setItem('token', 'true');
 
-      console.log('from auth service: ' + JSON.stringify(res.user));
+      //console.log('from auth service: ' + JSON.stringify(res.user));
 
       if(res.user?.emailVerified == true){
         this.router.navigate(['/home']);
@@ -41,9 +41,20 @@ export class AuthService {
       })
     }
 
+    //working with 
+    // isLoggedIn(){
+    //   this.fireAuth.currentUser.then((res) => {
+    //     if(res){
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   });
+    // }
+
     //sign out
     logout(){
-      this.fireAuth.signOut().then(() => {
+      this.fireAuth.signOut().then((res) => {
         localStorage.removeItem('token');
         this.router.navigate(['/home']);
       }, err => {
