@@ -1,1 +1,22 @@
-<p>add-company works!</p>
+<div>
+    <h1>Add Company</h1>
+    <form action="">
+        <div class="form-control">
+            <label for="name">Company Name:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="name">
+        </div>
+        <div class="form-control">
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" [(ngModel)]="country">
+        </div>
+        <div class="form-control">
+            <label for="working_capital">Working capital:</label>
+            <input type="text" id="working_capital" name="working_capital" [(ngModel)]="working_capital">
+        </div>
+        <div class="form-control">
+            <label for="invested_capital">Invested capital:</label>
+            <input type="text" id="invested_capital" name="invested_capital" [(ngModel)]="invested_capital">
+        </div>
+        <button (click)="addCompany()">Add company</button>
+    </form>
+</div>

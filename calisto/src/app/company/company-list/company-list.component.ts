@@ -19,7 +19,8 @@ export class CompanyListComponent implements OnInit{
   constructor( private auth: AuthService, private data: DataService){}
 
   ngOnInit(): void {
-    
+    this.getAllCompanies();
+    console.log(this.data);
   }
 
   getAllCompanies(){
@@ -32,5 +33,13 @@ export class CompanyListComponent implements OnInit{
     }, err => {
       alert('Error while fetching company data!');
     })
+  }
+
+  editCompany(){
+
+  }
+
+  deleteCompany(x: Company){
+    this.data.deleteCompany(x);
   }
 }

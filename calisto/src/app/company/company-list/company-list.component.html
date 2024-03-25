@@ -1,1 +1,24 @@
-<p>company-list works!</p>
+<table>
+    <thead>
+        <tr>
+            <th>Company name</th>
+            <th>Company Country</th>
+            <th>Working capital</th>
+            <th>Invested capital</th>
+        <tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let company of companyList">
+            <td>{{ company.name }}</td>
+            <td>{{ company.country }}</td>
+            <td>{{ company.working_capital }}</td>
+            <td>{{ company.invested_capital }}</td>
+            <td>
+                <button (click)="editCompany()">Edit</button>
+            </td>
+            <td>
+                <button (click)="deleteCompany(company)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
