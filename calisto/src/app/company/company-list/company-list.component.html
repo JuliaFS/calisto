@@ -14,11 +14,14 @@
             <td>{{ company.working_capital }}</td>
             <td>{{ company.invested_capital }}</td>
             <td>
+                <button (click)="companyDetails(company)">Details</button>
+            </td>
+   <!--        <td>
                 <button (click)="editCompany()">Edit</button>
             </td>
             <td>
                 <button (click)="deleteCompany(company)">Delete</button>
-            </td>
+            </td>--> 
         </tr>
     </tbody>
 </table>

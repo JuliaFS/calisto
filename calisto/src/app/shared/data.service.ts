@@ -11,9 +11,15 @@ export class DataService {
 
   //add company
   addCompany(company: Company){
-    company.id=this.afs.createId();
+    company.id = this.afs.createId();
 
     return this.afs.collection('/Companies').add(company);
+  }
+
+  //getOne company
+  getOneCompany(company: Company){
+    let companyDetails = this.afs.doc('/Companies/' + company.id).get();
+    return companyDetails;
   }
 
   //get all companies

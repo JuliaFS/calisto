@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Company } from 'src/app/model/company';
 import { DataService } from 'src/app/shared/data.service';
 import { AuthService } from 'src/app/user/auth.service';
@@ -16,11 +17,11 @@ export class CompanyListComponent implements OnInit{
   working_capital : number = 0;
   invested_capital : number = 0;
 
-  constructor( private auth: AuthService, private data: DataService){}
+  constructor( private auth: AuthService, private data: DataService, private router: Router){}
 
   ngOnInit(): void {
     this.getAllCompanies();
-    console.log(this.data);
+    //console.log(this.data);
   }
 
   getAllCompanies(){
@@ -35,8 +36,9 @@ export class CompanyListComponent implements OnInit{
     })
   }
 
-  editCompany(){
-
+  companyDetails(x: Company){
+    const companyData = this.data.getOneCompany(x);
+    this.router.navigate(['/company/company-details']);
   }
 
   deleteCompany(x: Company){

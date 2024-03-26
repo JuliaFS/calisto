@@ -13,7 +13,7 @@ export class DeleteCompanyComponent {
 
   deleteCompany( company: Company){
     if(window.confirm('Are you sure you want to delete' + company.name + '?')){
-      //this.data.deleteCompany(company.id);
+      this.data.deleteCompany(company);
     }
   }
 }

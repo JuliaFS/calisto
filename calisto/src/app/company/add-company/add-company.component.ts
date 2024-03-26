@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Company } from 'src/app/model/company';
 import { DataService } from 'src/app/shared/data.service';
 
@@ -24,7 +25,7 @@ export class AddCompanyComponent {
   working_capital : number = 0;
   invested_capital : number = 0;
 
-  constructor(private data: DataService){}
+  constructor(private data: DataService, private router: Router){}
   //private auth: AuthService
 
   addCompany(){
@@ -38,9 +39,9 @@ export class AddCompanyComponent {
     this.companyObj.working_capital = this.working_capital;
     this.companyObj.invested_capital = this.invested_capital;
     
-    this.data.addCompany(this.companyObj)
+    this.data.addCompany(this.companyObj);
     this.resetForm();
-  
+    this.router.navigate(['/home']);
   }
 
   resetForm(){

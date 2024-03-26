@@ -6,11 +6,19 @@ import { CompanyRoutingModule } from './company-router.module';
 import { AddCompanyComponent } from './add-company/add-company.component';
 import { CompanyListComponent } from './company-list/company-list.component';
 import { DeleteCompanyComponent } from './delete-company/delete-company.component';
+import { CompanyDetailsComponent } from './company-details/company-details.component';
+import { EditCompanyComponent } from './edit-company/edit-company.component';
 
 
 
 @NgModule({
-  declarations: [AddCompanyComponent, CompanyListComponent, DeleteCompanyComponent ],
+  declarations: [
+    AddCompanyComponent, 
+    CompanyListComponent, 
+    DeleteCompanyComponent, 
+    CompanyDetailsComponent, 
+    EditCompanyComponent 
+  ],
   imports: [
     CommonModule,
     RouterModule,
