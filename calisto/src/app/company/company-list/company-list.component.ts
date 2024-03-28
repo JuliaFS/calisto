@@ -11,6 +11,7 @@ import { Company } from 'src/app/model/company';
 export class CompanyListComponent implements OnInit {
   companies?: Company[];
   currentCompany?: Company;
+  //userId : string | null = localStorage.getItem('userId');
   currentIndex = -1;
   title = '';
 
@@ -18,6 +19,8 @@ export class CompanyListComponent implements OnInit {
 
   ngOnInit(): void {
     this.retrieveCompanies();
+    //console.log(this.userId);
+    //console.log(this.companies)
   }
 
   refreshList(): void {
@@ -34,7 +37,8 @@ export class CompanyListComponent implements OnInit {
         )
       )
     ).subscribe(data => {
-      this.companies = data;
+      this.companies = { ...data };
+      //this.companies.userId = this.userId;
     });
   }
 

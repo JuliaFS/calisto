@@ -12,6 +12,10 @@ import { DataService } from 'src/app/shared/data.service';
 export class AddCompanyComponent  {
   company: Company = new Company();
   submitted = false;
+  userId : any = localStorage.getItem('userId');
+
+
+
 
   constructor(private data: DataService, private route: Router) { }
 

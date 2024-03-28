@@ -5,6 +5,7 @@ export class Company {
     working_capital?: number;
     invested_capital?: number;
     published?: boolean;
+    author?: string;
   }
 
 // export interface Company {

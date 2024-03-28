@@ -1,4 +1,5 @@
 <div *ngIf="!submitted">
+    <form>
     <div class="form-group">
       <label for="name">Name</label>
       <input
@@ -44,6 +45,17 @@
         />
       </div>
 
+      <div class="form-group">
+        <input
+          class="form-control"
+          id="author"
+          type="hidden"
+          [(ngModel)]="userId"
+          name="author"
+        />
+      </div>
+    </form>
+      <div>{{userId}}</div>
     <button (click)="saveCompany()">Submit</button>
   </div>
 
