@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'company-list', component: CompanyListComponent },
   { path: 'delete-company', component: DeleteCompanyComponent },
   { path: 'company-details', component: CompanyDetailsComponent },
-  { path: 'edit-company', component: EditCompanyComponent },
+  { path: 'edit-company/:id', component: EditCompanyComponent },
 ];
 
 @NgModule({

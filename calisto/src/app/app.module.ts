@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment.development';
 //import { LoginComponent } from './user/login/login.component';
 //import { RegisterComponent } from './user/register/register.component';
@@ -19,6 +20,7 @@ import { CompanyListComponent } from './company/company-list/company-list.compon
 import { AddCompanyComponent } from './company/add-company/add-company.component';
 import { DeleteCompanyComponent } from './company/delete-company/delete-company.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AngularFirestoreCollectionGroup } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     FormsModule,
   ],
   providers: [],

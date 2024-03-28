@@ -1,4 +1,37 @@
-<table>
+
+    <div >
+      <h4>Companies List List</h4>
+      <table >
+        <tbody>
+            <tr *ngFor="let company of companies; let i = index"
+            [class.active]="i == currentIndex">
+            <td>{{ company.name }}</td>
+            <td>{{ company.country }}</td>
+            <td>{{ company.working_capital }}</td>
+            <td>{{ company.invested_capital }}</td>
+            <td><a routerLink="/company/edit-company/{{company.id}}">Edit</a></td>
+            <!--<button (click)="setActiveCompany(company)">Edit</button>-->
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div >
+      <div *ngIf="currentCompany">
+        <!--<app-company-details
+          (refreshList)="refreshList()"
+          [company]="currentCompany"
+        ></app-company-details>-->
+      </div>
+  
+      <div *ngIf="!currentCompany">
+        <br />
+        <p>Please click on a Company...</p>
+      </div>
+    </div>
+
+
+
+<!--<table>
     <thead>
         <tr>
             <th>Company name</th>
@@ -14,14 +47,17 @@
             <td>{{ company.working_capital }}</td>
             <td>{{ company.invested_capital }}</td>
             <td>
-                <button (click)="companyDetails(company)">Details</button>
-            </td>
+                <button (click)="companyDetails(company)">Details</button>-->
+                <!--<a routerLink="/company/company-details">Details</a>
+                <button (click)="getOne(company)">
+                <a routerLink="/company/company-details">Details</a>
+            </td>-->
    <!--        <td>
                 <button (click)="editCompany()">Edit</button>
-            </td>
-            <td>
+            </td>-->
+            <!--<td>
                 <button (click)="deleteCompany(company)">Delete</button>
-            </td>--> 
+            </td>
         </tr>
     </tbody>
-</table>
+</table>-->

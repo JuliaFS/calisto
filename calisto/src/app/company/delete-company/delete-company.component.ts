@@ -12,8 +12,8 @@ export class DeleteCompanyComponent {
   constructor(  private data: DataService ){}
 
   deleteCompany( company: Company){
-    if(window.confirm('Are you sure you want to delete' + company.name + '?')){
-      this.data.deleteCompany(company);
-    }
+    // if(window.confirm('Are you sure you want to delete' + company.name + '?')){
+    //   this.data.deleteCompany(company);
+    // }
   }
 }
