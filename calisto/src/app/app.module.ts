@@ -16,11 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { ErrorComponent } from './core/error/error.component';
-import { CompanyListComponent } from './company/company-list/company-list.component';
-import { AddCompanyComponent } from './company/add-company/add-company.component';
-import { DeleteCompanyComponent } from './company/delete-company/delete-company.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { AngularFirestoreCollectionGroup } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [

@@ -1,4 +1,4 @@
-<div *ngIf="currentCompany" class="edit-form">
+<!-- <div *ngIf="currentCompany" class="edit-form">
     <h4>Company</h4>
     <form>
       <div class="form-group">
@@ -74,13 +74,18 @@
   <div *ngIf="!currentCompany">
     <br />
     <p>Cannot access this Company...</p>
-  </div>
+  </div> -->
 
 
-<!--<p>company-details works!</p>
-<ng-container [companyList]="companyDetails">
+<p>company-details works!</p>
+<!--<ng-container [companyList]="companyDetails">
     <p>{{companyDetails}}</p>
 </ng-container>
 <button (click)="getOne(company)"></button>
 <p>test paragraph</p>-->
+<p>{{currentCompany.name}}</p>
+<p>{{currentCompany.country}}</p>
+<p>{{currentCompany.invested_capital}}</p>
+<p>{{currentCompany.working_capital}}</p>
+
 

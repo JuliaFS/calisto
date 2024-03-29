@@ -1,4 +1,4 @@
-
+<!-- 
     <div >
       <h4>Companies List List</h4>
       <table >
@@ -10,28 +10,28 @@
             <td>{{ company.working_capital }}</td>
             <td>{{ company.invested_capital }}</td>
             <td><a routerLink="/company/edit-company/{{company.id}}">Edit</a></td>
-            <!--<button (click)="setActiveCompany(company)">Edit</button>-->
+            <button (click)="setActiveCompany(company)">Edit</button>
             </tr>
         </tbody>
     </table>
     </div>
     <div >
       <div *ngIf="currentCompany">
-        <!--<app-company-details
+        <app-company-details
           (refreshList)="refreshList()"
           [company]="currentCompany"
-        ></app-company-details>-->
+        ></app-company-details>
       </div>
   
       <div *ngIf="!currentCompany">
         <br />
         <p>Please click on a Company...</p>
       </div>
-    </div>
+    </div> -->
 
 
 
-<!--<table>
+<table>
     <thead>
         <tr>
             <th>Company name</th>
@@ -47,17 +47,10 @@
             <td>{{ company.working_capital }}</td>
             <td>{{ company.invested_capital }}</td>
             <td>
-                <button (click)="companyDetails(company)">Details</button>-->
-                <!--<a routerLink="/company/company-details">Details</a>
-                <button (click)="getOne(company)">
-                <a routerLink="/company/company-details">Details</a>
-            </td>-->
-   <!--        <td>
-                <button (click)="editCompany()">Edit</button>
-            </td>-->
-            <!--<td>
-                <button (click)="deleteCompany(company)">Delete</button>
+                <!--<button (click)="companyDetails(company)">Details</button>-->
+                <!--<button (click)="getOne(company)">-->
+                <a routerLink="/company/company-details/{{company.id}}">Details</a>
             </td>
         </tr>
     </tbody>
-</table>-->
+</table>

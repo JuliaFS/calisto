@@ -13,8 +13,10 @@
                     <li><a routerLink="/auth/register">Register</a></li>
                 </ul>
             </div>
+            <!--<div *ngIf="auth.user | async as user;">-->
             <div *ngIf="isLogged">
                 <ul class="navigation">
+                    <li><a routerLink="/company/add-company">Add Company</a></li>
                     <li><a routerLink="/auth/profile">Profile</a></li>
                     <li><a (click)="logout()">Logout</a></li>
                 </ul>

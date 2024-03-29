@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserRoutingModule } from './user-routing.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AngularFirestoreCollectionGroup } from '@angular/fire/compat/firestore';
 
 
 

@@ -1,4 +1,4 @@
-<div *ngIf="!submitted">
+<!--<div *ngIf="!submitted">
     <form>
     <div class="form-group">
       <label for="name">Name</label>
@@ -47,10 +47,11 @@
 
       <div class="form-group">
         <input
-          class="form-control"
+          class="form-control hidden"
           id="author"
-          type="hidden"
-          [(ngModel)]="userId"
+          required
+          type="text"
+          [(ngModel)]="company.name"
           name="author"
         />
       </div>
@@ -62,12 +63,12 @@
   <div *ngIf="submitted">
     <h4>You submitted successfully!</h4>
     <button (click)="newCompany()">Add</button>
-  </div>
+  </div>-->
 
 
-<!--<div>
+<div>
     <h1>Add Company</h1>
-    <form action="">
+    <form >
         <div class="form-control">
             <label for="name">Company Name:</label>
             <input type="text" id="name" name="name" [(ngModel)]="name">
@@ -86,4 +87,4 @@
         </div>
         <button (click)="addCompany()">Add company</button>
     </form>
-</div>-->
+</div>
