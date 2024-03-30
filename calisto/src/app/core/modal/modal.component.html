@@ -1,7 +1,14 @@
 <p>modal works!</p>
 
-<div>
-    <h1>{{message}}?</h1>
-    <button (click)="ConfirmAction()">Yes</button>
-    <button (click)="goToBackPage()">Back</button>
+<div class="container">
+    <div class="header">
+        <h3>Pls confirm!</h3>
+    </div>
+    <div class="content">
+        <p>{{message}}</p>
+    </div>
+    <div class="actions">
+        <button (click)="modal.showDialog=false">Yes</button>
+        <button (click)="goToBackPage()">Back</button>
+    </div>
 </div>

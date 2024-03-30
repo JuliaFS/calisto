@@ -13,7 +13,7 @@ import { ModalComponent } from './modal/modal.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     HeaderComponent,

@@ -73,13 +73,14 @@
 //   }
 // }
 
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Company } from 'src/app/model/company';
 import { DataService } from 'src/app/shared/data.service';
 import { CompanyListComponent } from '../company-list/company-list.component';
 import { AuthService } from 'src/app/user/auth.service';
 import { map } from 'rxjs';
+import { ModalMainService } from 'src/app/core/modal/modal-main.service';
 
 @Component({
   selector: 'app-company-details',
@@ -99,11 +100,15 @@ export class CompanyDetailsComponent implements OnInit {
   //companyId : any = this.act.params;
 
   constructor(private data: DataService, private act: ActivatedRoute,
-              private auth: AuthService, ){ }
+              private auth: AuthService, public modal: ModalMainService){ }
 
   ngOnInit(): void {
     this.getCompany();
   }
+
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   this.modal.showDialog = !this.modal.showDialog;
+  // }
 
   getCompany(){
 
@@ -123,12 +128,12 @@ export class CompanyDetailsComponent implements OnInit {
     })  
   }
 
-  showModal(){
-    this.isClickedDelete = true;
-    this.message = "Are you want to delete this company?"
-    console.log('Yesssssssssss')
-    console.log(this.isClickedDelete);
-  }
+  // showModal(){
+  //   this.isClickedDelete = true;
+  //   this.message = "Are you want to delete this company?"
+  //   console.log('Yesssssssssss')
+  //   console.log(this.isClickedDelete);
+  // }
 
     deleteCompany(): void {
       this.data.delete(this.companyId)

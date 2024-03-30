@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ModalMainService } from './modal-main.service';
 
 @Component({
   selector: 'app-modal',
@@ -7,6 +8,8 @@ import { Component, Input } from '@angular/core';
 })
 export class ModalComponent {
   @Input() message : string = '';
+
+  constructor(public modal: ModalMainService){}
 
   ConfirmAction(){
 
