@@ -114,7 +114,7 @@ export class CompanyListComponent implements OnInit{
       this.companyList = res.map((e : any) => {
         const data = e.payload.doc.data();
         data.id = e.payload.doc.id;
-        console.log(data);
+        //console.log(data);
         return data;
       })
     }, err => {

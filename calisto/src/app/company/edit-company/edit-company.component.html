@@ -1,7 +1,3 @@
-
-<!--
-(refreshList)="refreshList()"
-<div>
 <div *ngIf="currentCompany" class="edit-form">
     <h4>Edit Company</h4>
     <form>
@@ -45,30 +41,9 @@
           name="invested_capital"
         />
       </div>
-  
-      <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{ currentCompany.published ? "Published" : "Pending" }}
-      </div>
     </form>
   
-    <button
-      *ngIf="currentCompany.published"
-      (click)="updatePublished(false)"
-    >
-      UnPublish
-    </button>
-    <button
-      *ngIf="!currentCompany.published"
-      (click)="updatePublished(true)"
-    >
-      Publish
-    </button>
-  
-    <button (click)="deleteCompany()">
-      Delete
-    </button>
-  
+
     <button type="submit" (click)="updateCompany()">
       Update
     </button>
@@ -79,32 +54,3 @@
     <br />
     <p>Cannot access this Company...</p>
   </div>
-  </div>-->
-
-
-
-
-
-<<p>edit-company works!</p>
-<!--<div>
-    <h1>Edit Company</h1>
-    <form action="">
-        <div class="form-control">
-            <label for="name">Company Name:</label>
-            <input type="text" id="name" name="name" [(ngModel)]="name">
-        </div>
-        <div class="form-control">
-            <label for="country">Country:</label>
-            <input type="text" id="country" name="country" [(ngModel)]="country">
-        </div>
-        <div class="form-control">
-            <label for="working_capital">Working capital:</label>
-            <input type="text" id="working_capital" name="working_capital" [(ngModel)]="working_capital">
-        </div>
-        <div class="form-control">
-            <label for="invested_capital">Invested capital:</label>
-            <input type="text" id="invested_capital" name="invested_capital" [(ngModel)]="invested_capital">
-        </div>
-        <button (click)="editCompany()">Edit company</button>
-    </form>
-</div>-->

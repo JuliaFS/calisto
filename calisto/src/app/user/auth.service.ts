@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { getAuth } from "firebase/auth";
 
 @Injectable({
   providedIn: 'root'
@@ -89,5 +90,21 @@ export class AuthService {
       }, err => {
         alert(err.message);
       })
+    }
+
+    userUid(){
+      const auth = getAuth();
+      const user = auth.currentUser;
+
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        // ...
+        //console.log(user.uid);
+        return user.uid;
+      } else {
+          return "No such user!";
+        // No user is signed in.
+      }
     }
 }

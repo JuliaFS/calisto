@@ -37,6 +37,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Company } from 'src/app/model/company';
 import { DataService } from 'src/app/shared/data.service';
+import { AuthService } from 'src/app/user/auth.service';
 
 @Component({
   selector: 'app-add-company',
@@ -55,7 +56,8 @@ export class AddCompanyComponent {
     owner: '',
   };
 
-  ownerVar = localStorage.getItem('userId') as string;
+  //ownerVar = localStorage.getItem('userId') as string;
+  ownerVar : string = this.auth.userUid();
 
   id : string = '';
   name : string = '';
@@ -63,7 +65,7 @@ export class AddCompanyComponent {
   working_capital : number = 0;
   invested_capital : number = 0;
 
-  constructor(private data: DataService, private router: Router){}
+  constructor(private data: DataService, private router: Router, private auth: AuthService){}
   //private auth: AuthService
 
   addCompany(){
@@ -85,6 +87,10 @@ export class AddCompanyComponent {
 
     this.resetForm();
     this.router.navigate(['/company/company-list']);
+  }
+
+  get isLogged() : boolean | null{
+    return localStorage.getItem('token') ? true : null;
   }
 
   resetForm(){

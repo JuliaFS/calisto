@@ -87,5 +87,9 @@
 <p>{{currentCompany.country}}</p>
 <p>{{currentCompany.invested_capital}}</p>
 <p>{{currentCompany.working_capital}}</p>
+<div *ngIf="userId == currentCompany.owner">
+<a routerLink="/company/edit-company/{{companyId}}">Edit</a>
+<a routerLink="/company/delete-company/{{companyId}}">Delete</a>
+</div>
 
 

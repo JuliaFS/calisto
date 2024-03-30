@@ -93,8 +93,8 @@ export class DataService {
   }
 
   //getOne company
-  getOneCompany(company: Company){
-    this.afs.doc('/Companies/' + company.id).get();
+  //getOneCompany(company: Company){
+    //ts.afs.doc('/Companies/' + company.id).get();
     // console.log('in data servise company.id: ' + company.id);
     // this.afs.doc('/Companies/' + company.id).valueChanges().subscribe(data => {
     //   console.log(data);
@@ -109,12 +109,26 @@ export class DataService {
       //   return { id: e.payload.doc.id, location: e.payload.doc.data()["location"], number: e.payload.doc.data()["phone"], name: e.payload.doc.data()["name"]}
       // })
   //})
-}
+//}
 
   getCompanyById(id : string){
     return this.afs.collection('Companies').doc(id).valueChanges();
   }
 
+  getOwnerUid(id: any){
+    // this.userService.get(fireuser.uid).snapshotChanges()),
+    //     map(document => document.payload.data().isAdmin) 
+   // return this.afs.collection('Companies').doc(id).valueChanges();
+   return this.afs.collection('Companies').doc(id).snapshotChanges();
+  }
+
+  // ownerUid(): Observable<string> {
+  //   return this.afs.user$
+  //     .pipe(
+  //       switchMap(fireuser => this.userService.get(fireuser.uid).snapshotChanges()),
+  //         map(document => document.payload.data().isAdmin) 
+  //     )
+  // }
 
   updateDoc(_id: string, _value: string) {
     let doc = this.afs.collection('options', ref => ref.where('id', '==', _id));
@@ -135,6 +149,11 @@ export class DataService {
   //delete company
   deleteCompany( company: Company ){
     this.afs.doc('/Companies/' + company.id).delete();
+  }
+
+   //update company 2
+     update(id: string, data: any): Promise<void> {
+    return this.afs.collection('Companies').doc(id).update(data);
   }
 
   //update company

@@ -9,7 +9,7 @@ import { EditCompanyComponent } from './edit-company/edit-company.component';
 const routes: Routes = [
   { path: 'add-company', component: AddCompanyComponent },
   { path: 'company-list', component: CompanyListComponent },
-  { path: 'delete-company', component: DeleteCompanyComponent },
+  { path: 'delete-company/:id', component: DeleteCompanyComponent },
   { path: 'company-details/:id', component: CompanyDetailsComponent },
   { path: 'edit-company/:id', component: EditCompanyComponent },
 ];

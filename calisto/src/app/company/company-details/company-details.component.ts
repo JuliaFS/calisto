@@ -79,6 +79,7 @@ import { Company } from 'src/app/model/company';
 import { DataService } from 'src/app/shared/data.service';
 import { CompanyListComponent } from '../company-list/company-list.component';
 import { AuthService } from 'src/app/user/auth.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-company-details',
@@ -87,16 +88,21 @@ import { AuthService } from 'src/app/user/auth.service';
 })
 export class CompanyDetailsComponent implements OnInit {
   companyId : any = this.act.snapshot.paramMap.get('id');
+  userId : string = this.auth.userUid();
+  isOwner : boolean = false;
+  ownerId : any = '';
 
   //currentCompany : Company[] = {};
   currentCompany : any = {};
   //companyId : any = this.act.params;
 
-  constructor(private data: DataService, private act: ActivatedRoute){ }
+  constructor(private data: DataService, private act: ActivatedRoute,
+              private auth: AuthService, ){ }
 
   //this.activeRoute.params.subscribe()
   ngOnInit(): void {
     this.getCompany();
+
     //console.log(this.companyId);
     // this.data.getCompanyById(this.companyId).subscribe( (data) => {
     //        console.log('currentCompany before: ' + this.currentCompany);
@@ -166,15 +172,38 @@ export class CompanyDetailsComponent implements OnInit {
   
   //  }
   //  -----
-  
+  // (fireuser => this.userService.get(fireuser.uid).snapshotChanges()),
+  //       map(document => document.payload.data().isAdmin) 
+
+  //--------------
       this.data.getCompanyById(this.companyId).subscribe( res => {
-        console.log(res)
+        //console.log(res)
           // const data = e.payload.doc.data();
           this.currentCompany = res;
+          //let test = res.data();
+          // this.ownerId = res.owner;
+          // console.log('test: ' + this.ownerId)
+          //this.ownerId = res.payload.data().owner;
           // data.id = e.payload.doc.id;
+          //this.userId = res.owner as string;
           // console.log(data);
           // return data;
       })
+
+      // this.data.getOwnerUid(this.companyId).subscribe( comp => {
+        
+      // }
+        
+      // )
+
+      //this.ownerId = this.http.get(path).map(res => res.json());
+
+    //   return this.auth.user$
+    // .pipe(
+    //   switchMap(fireuser => this.userService.get(fireuser.uid).snapshotChanges()),
+    //     map(document => document.payload.data().isAdmin) 
+    // )
+      
       // }, err => {
       //   alert('Error while fetching company data!');
       // })
