@@ -17,7 +17,8 @@ import { ModalComponent } from './modal/modal.component';
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ModalComponent
   ]
 })
 export class CoreModule { }

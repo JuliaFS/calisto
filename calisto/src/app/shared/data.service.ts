@@ -147,8 +147,12 @@ export class DataService {
   }
 
   //delete company
-  deleteCompany( company: Company ){
-    this.afs.doc('/Companies/' + company.id).delete();
+  // deleteCompany( companyId: any  ){
+  //   this.afs.doc('/Companies/' + companyId).delete();
+  // }
+
+  delete(id: string): Promise<void> {
+    return this.afs.collection('Companies').doc(id).delete();
   }
 
    //update company 2
@@ -157,10 +161,10 @@ export class DataService {
   }
 
   //update company
-  updateCompany( company: Company ){
-    this.deleteCompany(company);
-    this.addCompany(company);
-  }
+  // updateCompany( company: Company ){
+  //   this.deleteCompany(company);
+  //   this.addCompany(company);
+  // }
 
 }
 

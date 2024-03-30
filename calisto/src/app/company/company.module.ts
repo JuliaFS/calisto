@@ -8,6 +8,7 @@ import { CompanyListComponent } from './company-list/company-list.component';
 import { DeleteCompanyComponent } from './delete-company/delete-company.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { EditCompanyComponent } from './edit-company/edit-company.component';
+import { ModalComponent } from '../core/modal/modal.component';
 
 
 
@@ -17,7 +18,8 @@ import { EditCompanyComponent } from './edit-company/edit-company.component';
     CompanyListComponent, 
     DeleteCompanyComponent, 
     CompanyDetailsComponent, 
-    EditCompanyComponent 
+    EditCompanyComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,

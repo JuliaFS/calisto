@@ -91,95 +91,27 @@ export class CompanyDetailsComponent implements OnInit {
   userId : string = this.auth.userUid();
   isOwner : boolean = false;
   ownerId : any = '';
+  message : string = '';
+  isClickedDelete : boolean = false;
 
-  //currentCompany : Company[] = {};
+  
   currentCompany : any = {};
   //companyId : any = this.act.params;
 
   constructor(private data: DataService, private act: ActivatedRoute,
               private auth: AuthService, ){ }
 
-  //this.activeRoute.params.subscribe()
   ngOnInit(): void {
     this.getCompany();
-
-    //console.log(this.companyId);
-    // this.data.getCompanyById(this.companyId).subscribe( (data) => {
-    //        console.log('currentCompany before: ' + this.currentCompany);
-    //        //this.currentCompany = data;
-    //        console.log('currentCompany after: ' + this.currentCompany);
-    //        console.log(data)
-    // });
-    //console.log(this.data.getOneCompany);
-    // getOne(x){
-    //   const test = this.data.getOneCompany(x);
-    //   console.log('details page: ' + test);
-    // }
-
-      //   this.firestore.collection("hospitals").snapshotChanges().subscribe((data) => {
-      // this.hospitalsArray = data.map(e => {
-      //   return { id: e.payload.doc.id, location: e.payload.doc.data()["location"], number: e.payload.doc.data()["phone"], name: e.payload.doc.data()["name"]}
-      // })
-
-    // constructor(private firestore:AngularFirestore){}
-    // hospitalsArray=[];
-    // ngOnInit(){
-    //     this.firestore.collection("hospitals").snapshotChanges().subscribe((data) => {
-    //       this.hospitalsArray = data.map(e => {
-    //         return { id: e.payload.doc.id, location: e.payload.doc.data()["location"], number: e.payload.doc.data()["phone"], name: e.payload.doc.data()["name"]}
-    //       })
-    // }
-
-    //console.log(this.data.getOneCompany);
-    // this.activeRoute.params.subscribe( (data) => {
-    //   //const id = data['themeId'];
-    //   console.log(data)
-    //   const id = data['uid'];
-    //   console.log('id' + id);
-    // })
-    // this.data.getOneCompany().subscribe(){
-    //   //id = e.payload.doc.id;
-    // }
-
-    // this.activeRoute.params.subscribe((data) => {
-    //   const id = data;
-    //   console.log(id);
-
-      // this.apiService.getTheme(id).subscribe((theme) => {
-      //   this.theme = theme;
-      // });
-    //});
   }
 
   getCompany(){
 
-    // const company$ = this.data.getAllCompanies().snapshotChanges().pipe(map((companies) =>companies.map(compani=>{
-    //   const data = s.payload.doc.id;
-    //   console.log(data);
-    //   return data;
-    // })));
   
-  // -------
-  // schoolProductCollectionFetch(schoolName){
-      
-  //   const school = this.db.collection(schoolName)
-  //   this.school$ = school.snapshotChanges().pipe(map(schoollist=>schoollist.map(s=>{
-  //     const data = s.payload.doc.id;
-  //     console.log(data);
-  //     return data;
-  //   })));
-  //   return this.school$
-  
-  //  }
-  //  -----
-  // (fireuser => this.userService.get(fireuser.uid).snapshotChanges()),
-  //       map(document => document.payload.data().isAdmin) 
-
-  //--------------
-      this.data.getCompanyById(this.companyId).subscribe( res => {
+  this.data.getCompanyById(this.companyId).subscribe( res => {
         //console.log(res)
           // const data = e.payload.doc.data();
-          this.currentCompany = res;
+    this.currentCompany = res;
           //let test = res.data();
           // this.ownerId = res.owner;
           // console.log('test: ' + this.ownerId)
@@ -188,24 +120,22 @@ export class CompanyDetailsComponent implements OnInit {
           //this.userId = res.owner as string;
           // console.log(data);
           // return data;
-      })
+    })  
+  }
 
-      // this.data.getOwnerUid(this.companyId).subscribe( comp => {
-        
-      // }
-        
-      // )
+  showModal(){
+    this.isClickedDelete = true;
+    this.message = "Are you want to delete this company?"
+    console.log('Yesssssssssss')
+    console.log(this.isClickedDelete);
+  }
 
-      //this.ownerId = this.http.get(path).map(res => res.json());
-
-    //   return this.auth.user$
-    // .pipe(
-    //   switchMap(fireuser => this.userService.get(fireuser.uid).snapshotChanges()),
-    //     map(document => document.payload.data().isAdmin) 
-    // )
-      
-      // }, err => {
-      //   alert('Error while fetching company data!');
-      // })
+    deleteCompany(): void {
+      this.data.delete(this.companyId)
+        .then(() => {
+          this.message = 'The company was updated successfully!';
+        })
+        .catch(err => console.log(err));
     }
+  
 }

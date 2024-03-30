@@ -3,13 +3,14 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { getAuth } from "firebase/auth";
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private fireAuth: AngularFireAuth, private router: Router) { }
+  constructor(private fireAuth: AngularFireAuth, private router: Router, private location: Location) { }
 
   //login method
   login(email: string, password: string){
@@ -20,7 +21,8 @@ export class AuthService {
       //console.log('from auth service: ' + JSON.stringify(res.user));
 
       if(res.user?.emailVerified == true){
-        this.router.navigate(['/home']);
+        this.location.back();
+        //this.router.navigate(['/home']);
       } else {
         this.router.navigate(['/verify-email']);
       }

@@ -10,12 +10,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./edit-company.component.css']
 })
 export class EditCompanyComponent implements OnInit{
-  // //@Input() currentCompany: Company = {};
-  // company : Company = new Company();
-  editCompany(){}
-
-
-   companyId : any = this.act.snapshot.paramMap.get('id');
+  companyId : any = this.act.snapshot.paramMap.get('id');
 
   currentCompany : any = {
     name: '',
@@ -35,9 +30,9 @@ export class EditCompanyComponent implements OnInit{
 
    ngOnInit(): void {
     this.data.getCompanyById(this.companyId).subscribe( (data) => {
-      console.log('currentCompany before: ' + this.currentCompany);
+      //console.log('currentCompany before: ' + this.currentCompany);
       this.currentCompany = data;
-      console.log('currentCompany after: ' + this.currentCompany);
+      //console.log('currentCompany after: ' + this.currentCompany);
     });
 }
 
@@ -53,11 +48,10 @@ export class EditCompanyComponent implements OnInit{
       invested_capital: this.currentCompany.invested_capital,
     };
 
-    if (this.currentCompany.id) {
-      this.data.update(this.companyId, data)
+    this.data.update(this.companyId, data)
         .then(() => this.message = 'The company was updated successfully!')
         .catch(err => console.log(err));
-    }
+        
     this.location.back();
   }
 }
