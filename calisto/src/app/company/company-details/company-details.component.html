@@ -89,10 +89,10 @@
 <p>{{currentCompany.working_capital}}</p>
 <div *ngIf="userId == currentCompany.owner">
 <a routerLink="/company/edit-company/{{companyId}}">Edit</a>
-<button (click)="modal.showDialog=true">Delete</button>
+<button (click)="showModal()">Delete</button>
 </div>
 <div *ngIf="isClickedDelete">
- <app-modal [message]="message" *ngIf="modal.showDialog" />
+ <app-modal [message]="message" (clickEvent)="deleteCompany()"/>
 </div>
 
 

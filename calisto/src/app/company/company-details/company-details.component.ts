@@ -79,8 +79,7 @@ import { Company } from 'src/app/model/company';
 import { DataService } from 'src/app/shared/data.service';
 import { CompanyListComponent } from '../company-list/company-list.component';
 import { AuthService } from 'src/app/user/auth.service';
-import { map } from 'rxjs';
-import { ModalMainService } from 'src/app/core/modal/modal-main.service';
+import { map } from 'rxjs'
 
 @Component({
   selector: 'app-company-details',
@@ -100,23 +99,21 @@ export class CompanyDetailsComponent implements OnInit {
   //companyId : any = this.act.params;
 
   constructor(private data: DataService, private act: ActivatedRoute,
-              private auth: AuthService, public modal: ModalMainService){ }
+              private auth: AuthService){ }
 
   ngOnInit(): void {
     this.getCompany();
   }
 
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   this.modal.showDialog = !this.modal.showDialog;
-  // }
+  //ngOnChanges(changes: SimpleChanges): void {
+   // this.isDeleteClicked();
+ // }
 
   getCompany(){
-
-  
   this.data.getCompanyById(this.companyId).subscribe( res => {
         //console.log(res)
           // const data = e.payload.doc.data();
-    this.currentCompany = res;
+      this.currentCompany = res;
           //let test = res.data();
           // this.ownerId = res.owner;
           // console.log('test: ' + this.ownerId)
@@ -125,16 +122,15 @@ export class CompanyDetailsComponent implements OnInit {
           //this.userId = res.owner as string;
           // console.log(data);
           // return data;
-    })  
+    });
   }
 
-  // showModal(){
-  //   this.isClickedDelete = true;
-  //   this.message = "Are you want to delete this company?"
-  //   console.log('Yesssssssssss')
-  //   console.log(this.isClickedDelete);
-  // }
+  showModal(){
+    this.isClickedDelete = !this.isClickedDelete;
 
+    this.message = "Are you want to delete this company?"
+  
+  }
     deleteCompany(): void {
       this.data.delete(this.companyId)
         .then(() => {

@@ -1,21 +1,43 @@
-import { Component, Input } from '@angular/core';
-import { ModalMainService } from './modal-main.service';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
-export class ModalComponent {
-  @Input() message : string = '';
+export class ModalComponent{
+  companyId = this.act.snapshot.paramMap.get('id') as string;
 
-  constructor(public modal: ModalMainService){}
+  @Input() message : string = ''; 
+  @Output() clickEvent = new EventEmitter();
+  isOpen : boolean = false;
+  //isClicked : boolean = false;
 
-  ConfirmAction(){
+  constructor(private act: ActivatedRoute, private router: Router, private location: Location){}
 
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   this.refreshStatus();
+  // }
+
+  firmAction(){
+  this.isOpen = true;
+  this.clickEvent.emit();
+  this.router.navigate(['/company/company-list']);
   }
 
-  goToBackPage(){
-      
+  goToBackPage($event : any){
+    console.log($event);
+    this.isOpen = false;
+    console.log(this.companyId)
+    this.router.navigate([`/company/company-details/${this.companyId}`]);
+    //this.location.onUrlChange;
+    //this.router.navigate(['/company/company-list']);
+    //this.location.back();
   }
+
+  // refreshStatus(){
+  //   this.router.navigate(['/company/company-details/{{companyId}}']);
+  // }
 }

@@ -8,7 +8,9 @@
         <p>{{message}}</p>
     </div>
     <div class="actions">
-        <button (click)="modal.showDialog=false">Yes</button>
-        <button (click)="goToBackPage()">Back</button>
+        <!--<button (click)="modal.showDialog()">Yes</button>-->
+        <button (click)="firmAction()">Yes</button>
+        <button class="back-btn" (click)="goToBackPage($event)">Back</button>
+        <!--<button (click)="goToBackPage()">Back</button>-->
     </div>
 </div>
