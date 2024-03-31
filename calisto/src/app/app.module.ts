@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment.development';
 //import { LoginComponent } from './user/login/login.component';
 //import { RegisterComponent } from './user/register/register.component';
 import { HomeComponent } from './home/home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 //import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
 import { HeaderComponent } from './core/header/header.component';
@@ -37,6 +37,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

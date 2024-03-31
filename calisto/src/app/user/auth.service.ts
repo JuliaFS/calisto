@@ -33,7 +33,7 @@ export class AuthService {
   }
 
     //register method
-    register(email: string, password: string){
+    register(email: string, password: string, rePassword: string){
       this.fireAuth.createUserWithEmailAndPassword(email, password).then((res) => {
         localStorage.setItem('token', 'true');
         alert('register succesfull');

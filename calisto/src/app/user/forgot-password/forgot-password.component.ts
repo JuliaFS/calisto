@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { EMAIL_DOMAINS } from 'src/app/constants';
 
 @Component({
   selector: 'app-forgot-password',
@@ -9,6 +10,7 @@ import { AuthService } from '../auth.service';
 export class ForgotPasswordComponent {
 
   email : string = '';
+  domains = EMAIL_DOMAINS;
 
   constructor( private auth: AuthService ) {}
 

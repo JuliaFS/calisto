@@ -4,10 +4,11 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserRoutingModule } from './user-routing.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AngularFirestoreCollectionGroup } from '@angular/fire/compat/firestore';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -17,7 +18,9 @@ import { AngularFirestoreCollectionGroup } from '@angular/fire/compat/firestore'
     CommonModule,
     UserRoutingModule,
     RouterModule,
+    SharedModule,
     FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }

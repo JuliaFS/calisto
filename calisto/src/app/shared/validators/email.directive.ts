@@ -6,7 +6,7 @@ import {
   Validator,
   ValidatorFn,
 } from '@angular/forms';
-import { emailValidator } from 'src/app/shared/utils/email.validator';
+import { emailValidator } from '../utils/email-validator';
 //{ emailValidator } from '../../utils/email-validator';
 
 @Directive({

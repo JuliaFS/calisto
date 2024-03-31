@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { NgForm } from '@angular/forms';
+import { EMAIL_DOMAINS } from 'src/app/constants';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,14 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  domains = EMAIL_DOMAINS;
   // email: string = '';
   // password: string = '';
 
   constructor(private auth: AuthService){}
 
   login(form: NgForm){
+    console.log('yessssssss')
     // if(!this.email){
     //   alert('Fill email!');
     //   return;
@@ -28,11 +31,13 @@ export class LoginComponent {
     // this.email = '';
     // this.password = '';
       if (form.invalid) {
+
         return;
       }
   
       const { email, password } = form.value;
-
+      console.log(email)
+      console.log(password)
       // try{
       //   this.auth.login(this.email, this.password);
       // } catch(err => {

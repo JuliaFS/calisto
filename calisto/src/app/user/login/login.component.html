@@ -10,7 +10,9 @@
                 placeholder="Enter email here..."
                 ngModel
                 #inputEmail="ngModel"
-                required>
+                required
+                [appEmail]="domains"
+            >
         </div>
     <ng-container *ngIf="inputEmail.touched">
       <p class="error" *ngIf="inputEmail.errors?.['required']">
@@ -34,6 +36,14 @@
                 minlength="5"
             >
         </div>
+        <ng-container *ngIf="inputPassword.touched">
+            <p class="error" *ngIf="inputPassword.errors?.['required']">
+              Password is required!
+            </p>
+            <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+              Password must be at least 5 characters!
+            </p>
+          </ng-container>
 
         <button>Login</button>
         <div>
