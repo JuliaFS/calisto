@@ -24,11 +24,11 @@ export class AuthService {
         this.location.back();
         this.router.navigate(['/home']);
       } else {
-        this.router.navigate(['/verify-email']);
+        this.router.navigate(['/auth/verify-email']);
       }
     }, err => {
       alert(err.message);
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth/login']);
     })
   }
 
@@ -41,7 +41,7 @@ export class AuthService {
         this.sendEmailForVerification(res.user);
       }, err => {
         alert('register error: ' + err.message);
-        this.router.navigate(['/register']);
+        this.router.navigate(['/auth/register']);
       })
     }
 
@@ -99,10 +99,13 @@ export class AuthService {
       const auth = getAuth();
       const user = auth.currentUser;
       if(user){
+        console.log('isLogged from if')
         return true;
       } else {
+        console.log('is logged from else')
         return false;
       }
+      //return !!user;
     }
 
     userUid(){

@@ -9,6 +9,7 @@ import { DeleteCompanyComponent } from './delete-company/delete-company.componen
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { EditCompanyComponent } from './edit-company/edit-company.component';
 import { ModalComponent } from '../core/modal/modal.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -24,8 +25,9 @@ import { ModalComponent } from '../core/modal/modal.component';
   imports: [
     CommonModule,
     RouterModule,
-    CompanyRoutingModule,
     FormsModule,
+    CompanyRoutingModule,
+    SharedModule
   ]
 })
 export class CompanyModule { }
