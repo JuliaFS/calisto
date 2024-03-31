@@ -15,14 +15,14 @@ export class AuthService {
   //login method
   login(email: string, password: string){
     this.fireAuth.signInWithEmailAndPassword(email, password).then((res) => {
-      // localStorage.setItem('token', 'true');
-      // localStorage.setItem('userId', JSON.stringify(res.user?.uid));
+      localStorage.setItem('token', 'true');
+      localStorage.setItem('userId', JSON.stringify(res.user?.uid));
 
       //console.log('from auth service: ' + JSON.stringify(res.user));
 
       if(res.user?.emailVerified == true){
         this.location.back();
-        //this.router.navigate(['/home']);
+        this.router.navigate(['/home']);
       } else {
         this.router.navigate(['/verify-email']);
       }
@@ -60,6 +60,7 @@ export class AuthService {
     logout(){
       this.fireAuth.signOut().then((res) => {
         localStorage.removeItem('token');
+        localStorage.removeItem('userId');
         this.router.navigate(['/home']);
       }, err => {
         alert(err.message);

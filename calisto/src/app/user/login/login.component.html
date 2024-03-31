@@ -1,18 +1,16 @@
 <div class="container">
     <form class="login" #form="ngForm" (ngSubmit)="login(form)">
-        <fieldset>
-            <h4>Login</h4>
-        <div>
+            <h2>Login</h2>
+        <div class="input-container">
             <label for="email">Email</label>
             <input 
                 type="email" 
                 id="email" 
                 name="email" 
-                plaseholder="Enter email here..."
+                placeholder="Enter email here..."
                 ngModel
                 #inputEmail="ngModel"
-                required
-            >
+                required>
         </div>
     <ng-container *ngIf="inputEmail.touched">
       <p class="error" *ngIf="inputEmail.errors?.['required']">
@@ -23,7 +21,7 @@
       </p>
     </ng-container>
 
-        <div>
+        <div class="input-container">
             <label for="password">Password</label>
             <input 
                 type="password" 
@@ -33,30 +31,22 @@
                 ngModel
                 #inputPassword="ngModel"
                 required
-                minlength="5";
+                minlength="5"
             >
         </div>
 
-        <!--<button (click)="login()">Login</button>-->
-
-        <button
-        [disabled]="form.invalid"
-        [style]="{ backgroundColor: form.invalid ? 'grey' : 'blue' }"
-      >
-        Login
-      </button>
+        <button>Login</button>
         <div>
-            <a href="/register">Need Account?<span>Register here...</span></a>
+            <a href="/auth/register">Need Account?</a>
         </div>
         <div>
-            <a href="/forgot-password">Forgot password? <span>Click here</span></a>
+            <a href="/auth/forgot-password">Forgot password?</a>
         </div>
-        <div>
+        <div class="google-login">
             <a (click)="signInWithGoogle()">
-                <img src="../../../assets/icons8-google-48.png" height="24px" width="24px" alt="Google icon">
+                <img src="../../../assets/icons8-google-48.png" height="24px" width="24px" alt="Google icon"/>
                 <span>Sign in with Google</span>
             </a>
         </div>
-    </fieldset>
     </form>
 </div>
