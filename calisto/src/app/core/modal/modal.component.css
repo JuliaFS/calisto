@@ -38,3 +38,7 @@
     flex-direction: flex-end;
     gap: 20px;
 } */
+
+.hidden{
+    display: none;
+}

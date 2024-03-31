@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, Renderer2 } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -15,7 +15,7 @@ export class ModalComponent{
   isOpen : boolean = false;
   //isClicked : boolean = false;
 
-  constructor(private act: ActivatedRoute, private router: Router, private location: Location){}
+  constructor(private act: ActivatedRoute, private render: Renderer2, private router: Router, private location: Location){}
 
   // ngOnChanges(changes: SimpleChanges): void {
   //   this.refreshStatus();
@@ -27,14 +27,15 @@ export class ModalComponent{
   this.router.navigate(['/company/company-list']);
   }
 
-  goToBackPage($event : any){
-    console.log($event);
+  goToBackPage(){
     this.isOpen = false;
     console.log(this.companyId)
     this.router.navigate([`/company/company-details/${this.companyId}`]);
     //this.location.onUrlChange;
     //this.router.navigate(['/company/company-list']);
     //this.location.back();
+    //this.render.addClass($event.target,"hidden");
+
   }
 
   // refreshStatus(){
