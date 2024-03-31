@@ -95,6 +95,16 @@ export class AuthService {
       })
     }
 
+    get isLogged(): boolean {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      if(user){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     userUid(){
       const auth = getAuth();
       const user = auth.currentUser;

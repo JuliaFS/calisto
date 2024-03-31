@@ -16,7 +16,6 @@ export class LoginComponent {
   constructor(private auth: AuthService){}
 
   login(form: NgForm){
-    console.log('yessssssss')
     // if(!this.email){
     //   alert('Fill email!');
     //   return;
@@ -36,8 +35,6 @@ export class LoginComponent {
       }
   
       const { email, password } = form.value;
-      console.log(email)
-      console.log(password)
       // try{
       //   this.auth.login(this.email, this.password);
       // } catch(err => {

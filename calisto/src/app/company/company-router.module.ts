@@ -5,9 +5,10 @@ import { CompanyListComponent } from './company-list/company-list.component';
 import { DeleteCompanyComponent } from './delete-company/delete-company.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { EditCompanyComponent } from './edit-company/edit-company.component';
+import { AuthActivate } from '../guards/auth.activate';
 
 const routes: Routes = [
-  { path: 'add-company', component: AddCompanyComponent },
+  { path: 'add-company', component: AddCompanyComponent, canActivate: [AuthActivate]},
   { path: 'company-list', component: CompanyListComponent },
   { path: 'delete-company/:id', component: DeleteCompanyComponent },
   { path: 'company-details/:id', component: CompanyDetailsComponent },
