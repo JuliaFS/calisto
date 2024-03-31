@@ -1,98 +1,33 @@
-<!-- <div *ngIf="currentCompany" class="edit-form">
-    <h4>Company</h4>
-    <form>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="name"
-          [(ngModel)]="currentCompany.name"
-          name="name"
-        />
-      </div>
-      <div class="form-group">
-        <label for="country">Country</label>
-        <input
-          type="text"
-          class="form-control"
-          id="country"
-          [(ngModel)]="currentCompany.country"
-          name="country"
-        />
-      </div>
-      <div class="form-group">
-        <label for="working_capital">Working capital</label>
-        <input
-          type="text"
-          class="form-control"
-          id="working_capital"
-          [(ngModel)]="currentCompany.working_capital"
-          name="working_capital"
-        />
-      </div>
-      <div class="form-group">
-        <label for="invested_capital">Invested capital</label>
-        <input
-          type="text"
-          class="form-control"
-          id="invested_capital"
-          [(ngModel)]="currentCompany.invested_capital"
-          name="invested_capital"
-        />
-      </div>
-  
-      <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{ currentCompany.published ? "Published" : "Pending" }}
-      </div>
-    </form>
-  
-    <button
-      *ngIf="currentCompany.published"
-      (click)="updatePublished(false)"
-    >
-      UnPublish
-    </button>
-    <button
-      *ngIf="!currentCompany.published"
-      (click)="updatePublished(true)"
-    >
-      Publish
-    </button>
-  
-    <button (click)="deleteCompany()">
-      Delete
-    </button>
-  
-    <button type="submit" (click)="updateCompany()">
-      Update
-    </button>
-    <p>{{ message }}</p>
+<section class="details-container">
+  <header>
+    <h2>Company Details</h2>
+  </header>
+  <table>
+    <tbody>
+      <tr>
+        <td>Company name</td>
+        <td>{{currentCompany.name}}</td>
+      </tr>
+      <tr>
+        <td>Company Country</td>
+        <td>{{currentCompany.country}}</td>
+      </tr>
+      <tr>
+        <td>Working capital</td>
+        <td>{{currentCompany.working_capital}}</td>
+      </tr>
+      <tr>
+        <td>Invested capital</td>
+        <td>{{currentCompany.invested_capital}}</td>
+      </tr>
+        <tr *ngIf="userId == currentCompany.owner">
+            <td><a class="buttons" routerLink="/company/edit-company/{{companyId}}">Edit</a></td>
+          <td><button class="buttons" (click)="showModal()">Delete</button></td>
+         
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="isClickedDelete">
+    <app-modal [message]="message" (clickEvent)="deleteCompany()" />
   </div>
-  
-  <div *ngIf="!currentCompany">
-    <br />
-    <p>Cannot access this Company...</p>
-  </div> -->
-
-
-<p>company-details works!</p>
-<!--<ng-container [companyList]="companyDetails">
-    <p>{{companyDetails}}</p>
-</ng-container>
-<button (click)="getOne(company)"></button>
-<p>test paragraph</p>-->
-<p>{{currentCompany.name}}</p>
-<p>{{currentCompany.country}}</p>
-<p>{{currentCompany.invested_capital}}</p>
-<p>{{currentCompany.working_capital}}</p>
-<div *ngIf="userId == currentCompany.owner">
-<a routerLink="/company/edit-company/{{companyId}}">Edit</a>
-<button (click)="showModal()">Delete</button>
-</div>
-<div *ngIf="isClickedDelete">
- <app-modal [message]="message" (clickEvent)="deleteCompany()"/>
-</div>
-
-
+</section>
