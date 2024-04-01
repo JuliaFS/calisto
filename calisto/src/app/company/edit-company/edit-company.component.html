@@ -1,4 +1,107 @@
 <div *ngIf="currentCompany" class="edit-form">
+  <h4>Edit Company</h4>
+  <form>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="name" 
+        [(ngModel)]="currentCompany.name" 
+        name="name" 
+        #inputName="ngModel"
+        ngModel
+        required
+        minlength="5"
+      />
+      <ng-container *ngIf="inputName.touched">
+        <p class="error" *ngIf="inputName.errors?.['required']">
+          Name is required!
+        </p>
+        <p class="error" *ngIf="inputName.errors?.['minlength']">
+          Name must be at least 5 characters!
+        </p>
+      </ng-container>
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="country" 
+        [(ngModel)]="currentCompany.country" 
+        name="country"
+        #inputCountry="ngModel"
+        required
+        minlength="2" />
+        <ng-container *ngIf="inputCountry.touched">
+          <p class="error" *ngIf="inputCountry.errors?.['required']">
+            Country is required!
+          </p>
+          <p class="error" *ngIf="inputCountry.errors?.['minlength']">
+            Country must be at least 2 characters!
+          </p>
+        </ng-container>
+    </div>
+
+    <div class="form-group">
+      <label for="working_capital">Working capital</label>
+      <input 
+        type="number" 
+        class="form-control" 
+        id="working_capital" 
+        [(ngModel)]="currentCompany.working_capital"
+        #inputWorkingCapital="ngModel"
+        name="working_capital" 
+        required 
+        min="1"
+      />
+      <ng-container *ngIf="inputWorkingCapital.touched">
+        <p class="error" *ngIf="inputWorkingCapital.errors?.['required']">
+          Working capital is required!
+        </p>
+        <p class="error" *ngIf="inputWorkingCapital.errors?.['min']">
+          Working capital must be min 1 euro!
+        </p>
+      </ng-container>
+    </div>
+
+
+    <div class="form-group">
+      <label for="invested_capital">Invested capital</label>
+      <input 
+        type="number" 
+        class="form-control" 
+        id="invested_capital" 
+        [(ngModel)]="currentCompany.invested_capital"
+        #inputInvestedCapital="ngModel"
+        name="invested_capital" 
+        required 
+        min="1"
+      />
+      <ng-container *ngIf="inputInvestedCapital.touched">
+        <p class="error" *ngIf="inputInvestedCapital.errors?.['required']">
+          Working capital is required!
+        </p>
+        <p class="error" *ngIf="inputInvestedCapital.errors?.['min']">
+          Working capital must be min 1 euro!
+        </p>
+      </ng-container>
+    </div>
+    <button type="submit" (click)="updateCompany()">
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </form>
+</div>
+
+<div *ngIf="!currentCompany">
+  <br />
+  <p>Cannot access this Company...</p>
+</div>
+
+<!--<div *ngIf="currentCompany" class="edit-form">
     <h4>Edit Company</h4>
     <form>
       <div class="form-group">
@@ -53,4 +156,4 @@
   <div *ngIf="!currentCompany">
     <br />
     <p>Cannot access this Company...</p>
-  </div>
+  </div>-->

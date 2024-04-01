@@ -21,7 +21,7 @@
         <td>{{currentCompany.invested_capital}}</td>
       </tr>
         <tr *ngIf="userId == currentCompany.owner">
-            <td><a class="buttons" routerLink="/company/edit-company/{{companyId}}">Edit</a></td>
+            <td><a routerLink="/company/edit-company/{{companyId}}"><button class="buttons">Edit</button></a></td>
           <td><button class="buttons" (click)="showModal()">Delete</button></td>
          
       </tr>

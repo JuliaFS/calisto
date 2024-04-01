@@ -29,7 +29,6 @@ tr:nth-child(even){
 .table-container a{
         padding: 0.5em;
         text-decoration: none;
-        border-radius: 5px;
         background-color: #4257a2;
         color: white;
         font-weight: bold;

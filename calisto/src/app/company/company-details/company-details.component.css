@@ -61,14 +61,3 @@ tr:first-of-type td:last-of-type{
     cursor: pointer;
     font-size: 18px;
 }
-
-td{
-    border: 1px solid pink;
-}
-.buttons a{
-    display: block;
-    width: 300px;
-    border: 5px solid red;
-    padding: 1px 25px;
-    text-decoration: none;
-}
