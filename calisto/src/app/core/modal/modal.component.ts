@@ -30,7 +30,7 @@ export class ModalComponent{
   goToBackPage(){
     this.isOpen = false;
     console.log(this.companyId)
-    this.router.navigate([`/company/company-details/${this.companyId}`]);
+    this.router.navigate([`/company/company-list`]);
     //this.location.onUrlChange;
     //this.router.navigate(['/company/company-list']);
     //this.location.back();

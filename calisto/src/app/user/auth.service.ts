@@ -99,10 +99,10 @@ export class AuthService {
       const auth = getAuth();
       const user = auth.currentUser;
       if(user){
-        console.log('isLogged from if')
+        //console.log('isLogged from if')
         return true;
       } else {
-        console.log('is logged from else')
+        //console.log('is logged from else')
         return false;
       }
       //return !!user;

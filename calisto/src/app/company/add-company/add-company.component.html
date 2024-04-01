@@ -1,92 +1,91 @@
-<!--<div *ngIf="!submitted">
-    <form>
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="name"
+<div class="add-form-container">
+  <form class="add-form">
+    <h2>Add Company</h2>
+    <div class="form-control input-container">
+      <label for="name">Company Name:</label>
+      <input 
+        type="text" 
+        id="name" 
+        name="name" 
+        ngModel
+        #inputName="ngModel"
         required
-        [(ngModel)]="company.name"
-        name="name"
-      />
+        minlength="5"
+      >
+      <ng-container *ngIf="inputName.touched">
+        <p class="error" *ngIf="inputName.errors?.['required']">
+          Name is required!
+        </p>
+        <p class="error" *ngIf="inputName.errors?.['minlength']">
+          Name must be at least 5 characters!
+        </p>
+      </ng-container>
     </div>
 
-    <div class="form-group">
-      <label for="country">Country</label>
-      <input
-        class="form-control"
-        id="country"
+    <div class="form-control input-container">
+      <label for="country">Country:</label>
+      <input 
+        type="text" 
+        id="country" 
+        name="country" 
+        ngModel
+        #inputCountry="ngModel"
         required
-        [(ngModel)]="company.country"
-        name="country"
-      />
+        minlength="2"
+      >
+      <ng-container *ngIf="inputCountry.touched">
+        <p class="error" *ngIf="inputCountry.errors?.['required']">
+          Country is required!
+        </p>
+        <p class="error" *ngIf="inputCountry.errors?.['minlength']">
+          Country must be at least 2 characters!
+        </p>
+      </ng-container>
     </div>
 
-    <div class="form-group">
-        <label for="working_capital">Working capital</label>
-        <input
-          class="form-control"
-          id="working_capital"
-          required
-          [(ngModel)]="company.working_capital"
-          name="working_capital"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="invested_capital">Invested capital</label>
-        <input
-          class="form-control"
-          id="invested_capital"
-          required
-          [(ngModel)]="company.invested_capital"
-          name="invested_capital"
-        />
-      </div>
-
-      <div class="form-group">
-        <input
-          class="form-control hidden"
-          id="author"
-          required
-          type="text"
-          [(ngModel)]="company.name"
-          name="author"
-        />
-      </div>
-    </form>
-      <div>{{userId}}</div>
-    <button (click)="saveCompany()">Submit</button>
-  </div>
-
-  <div *ngIf="submitted">
-    <h4>You submitted successfully!</h4>
-    <button (click)="newCompany()">Add</button>
-  </div>-->
-
-
-<div>
-    <h1>Add Company</h1>
-    <form >
-        <div class="form-control">
-            <label for="name">Company Name:</label>
-            <input type="text" id="name" name="name" [(ngModel)]="name">
-        </div>
-        <div class="form-control">
-            <label for="country">Country:</label>
-            <input type="text" id="country" name="country" [(ngModel)]="country">
-        </div>
-        <div class="form-control">
-            <label for="working_capital">Working capital:</label>
-            <input type="text" id="working_capital" name="working_capital" [(ngModel)]="working_capital">
-        </div>
-        <div class="form-control">
-            <label for="invested_capital">Invested capital:</label>
-            <input type="text" id="invested_capital" name="invested_capital" [(ngModel)]="invested_capital">
-        </div>
-        <div>
-          <button (click)="addCompany()">Add company</button>
-      </div>
-    </form>
+    <div class="form-control input-container">
+      <label for="working_capital">Working capital:</label>
+      <input 
+        type="text" 
+        id="working_capital" 
+        name="working_capital" 
+        ngModel
+        #inputWorkingCapital="ngModel"
+        required 
+        min="1"
+      >
+      <ng-container *ngIf="inputWorkingCapital.touched">
+        <p class="error" *ngIf="inputWorkingCapital.errors?.['required']">
+          Working capital is required!
+        </p>
+        <p class="error" *ngIf="inputWorkingCapital.errors?.['min']">
+          Working capital must be min 1 euro!
+        </p>
+      </ng-container>
+    </div>
+    <div class="form-control input-container">
+      <label for="invested_capital">Invested capital:</label>
+      <input 
+        type="text" 
+        id="invested_capital" 
+        name="invested_capital" 
+        ngModel
+        #inputInvestedCapital="ngModel"
+        required 
+        min="1"
+      >
+      <ng-container *ngIf="inputInvestedCapital.touched">
+        <p class="error" *ngIf="inputInvestedCapital.errors?.['required']">
+          Working capital is required!
+        </p>
+        <p class="error" *ngIf="inputInvestedCapital.errors?.['min']">
+          Working capital must be min 1 euro!
+        </p>
+      </ng-container>
+    </div>
+    <button (click)="addCompany()">Add company</button>
+    <ng-container *ngIf="message!=''">
+      <p>{{ message }}</p>
+    </ng-container>
+  </form>
 </div>

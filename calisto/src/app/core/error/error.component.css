@@ -1,4 +1,14 @@
-.notification {
+.error, p{
+    width: 70%;
+    padding: 10px 5px 10px 10px;
+    border: 1px solid red;
+    color: red;
+    text-align: left;
+    background-color: white;
+    font-size: 0.8em;
+}
+
+/*.notification {
     position: fixed;
     z-index: 10;
     right: 8%;
@@ -18,4 +28,4 @@
   
   .success-message {
     background-color: rgba(99, 230, 81, 0.699);
-  }
+  }*/

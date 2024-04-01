@@ -20,14 +20,25 @@
         <td>Invested capital</td>
         <td>{{currentCompany.invested_capital}}</td>
       </tr>
-        <tr *ngIf="userId == currentCompany.owner">
-            <td><a routerLink="/company/edit-company/{{companyId}}"><button class="buttons">Edit</button></a></td>
-          <td><button class="buttons" (click)="showModal()">Delete</button></td>
-         
+      <tr class="button-container" *ngIf="userId == currentCompany.owner">
+        <td><a routerLink="/company/edit-company/{{companyId}}"><button class="buttons edit">Edit</button></a></td>
+        <td><button class="buttons delete" (click)="showModal()">Delete</button></td>
       </tr>
     </tbody>
   </table>
   <div *ngIf="isClickedDelete">
     <app-modal [message]="message" (clickEvent)="deleteCompany()" />
   </div>
+  <ng-container *ngIf="message!=''">
+    <p>{{ message }}</p>
+  </ng-container>
+</section>
+<section class="private-section">
+  <h2>This is private section.</h2>
+  <p>If you want to see more details for companies pls 
+    <span>
+      <a routerLink="/auth/login">Login</a>
+    </span> or
+    <span><a routerLink="/auth/register">Register</a></span>here!
+  </p>
 </section>

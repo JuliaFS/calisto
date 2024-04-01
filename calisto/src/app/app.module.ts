@@ -18,6 +18,8 @@ import { FooterComponent } from './core/footer/footer.component';
 import { ErrorComponent } from './core/error/error.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
+//import { AuthenticateComponent } from './authenticate/authenticate/authenticate.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HeaderComponent,
     FooterComponent,
     ErrorComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    //AuthenticateComponent
   ],
   imports: [
     BrowserModule,

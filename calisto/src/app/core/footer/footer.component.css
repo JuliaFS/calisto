@@ -1,0 +1,24 @@
+.footer-page{
+    background-color: #4257a2;
+    text-align: center;
+    padding: 1%;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-page p{
+    display: inline-block;
+    font-weight: bold;
+}
+
+.footer-page p:first-child{
+    color: rgb(78, 119, 196);
+    margin-right: 1%;
+}
+
+.footer-page a{
+    color: white;
+    text-decoration: none;
+}

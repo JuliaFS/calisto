@@ -1,7 +1,7 @@
 <div *ngIf="currentCompany" class="edit-form">
-  <h4>Edit Company</h4>
-  <form>
-    <div class="form-group">
+  <form class="edit-details-form">
+    <h2>Edit Company</h2>
+    <div class="form-group edit-container">
       <label for="name">Name</label>
       <input 
         type="text" 
@@ -24,7 +24,7 @@
       </ng-container>
     </div>
 
-    <div class="form-group">
+    <div class="form-group edit-container">
       <label for="country">Country</label>
       <input 
         type="text" 
@@ -45,7 +45,7 @@
         </ng-container>
     </div>
 
-    <div class="form-group">
+    <div class="form-group edit-container">
       <label for="working_capital">Working capital</label>
       <input 
         type="number" 
@@ -68,7 +68,7 @@
     </div>
 
 
-    <div class="form-group">
+    <div class="form-group edit-container">
       <label for="invested_capital">Invested capital</label>
       <input 
         type="number" 
@@ -92,68 +92,12 @@
     <button type="submit" (click)="updateCompany()">
       Update
     </button>
-    <p>{{ message }}</p>
+    <ng-container *ngIf="message!=''">
+      <p>{{ message }}</p>
+    </ng-container>
   </form>
 </div>
 
-<div *ngIf="!currentCompany">
-  <br />
+<ng-container *ngIf="!currentCompany">
   <p>Cannot access this Company...</p>
-</div>
-
-<!--<div *ngIf="currentCompany" class="edit-form">
-    <h4>Edit Company</h4>
-    <form>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="name"
-          [(ngModel)]="currentCompany.name"
-          name="name"
-        />
-      </div>
-      <div class="form-group">
-        <label for="country">Country</label>
-        <input
-          type="text"
-          class="form-control"
-          id="country"
-          [(ngModel)]="currentCompany.country"
-          name="country"
-        />
-      </div>
-      <div class="form-group">
-        <label for="working_capital">Working capital</label>
-        <input
-          type="text"
-          class="form-control"
-          id="working_capital"
-          [(ngModel)]="currentCompany.working_capital"
-          name="working_capital"
-        />
-      </div>
-      <div class="form-group">
-        <label for="invested_capital">Invested capital</label>
-        <input
-          type="text"
-          class="form-control"
-          id="invested_capital"
-          [(ngModel)]="currentCompany.invested_capital"
-          name="invested_capital"
-        />
-      </div>
-    </form>
-  
-
-    <button type="submit" (click)="updateCompany()">
-      Update
-    </button>
-    <p>{{ message }}</p>
-  </div>
-  
-  <div *ngIf="!currentCompany">
-    <br />
-    <p>Cannot access this Company...</p>
-  </div>-->
+</ng-container>

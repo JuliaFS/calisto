@@ -130,13 +130,14 @@ export class DataService {
   //     )
   // }
 
-  updateDoc(_id: string, _value: string) {
-    let doc = this.afs.collection('options', ref => ref.where('id', '==', _id));
-    doc.snapshotChanges().subscribe((res: any) => {
-      let id = res[0].payload.doc.id;
-      this.afs.collection('options').doc(id).update({rating: _value});
-    });
-  }
+  //!work
+  // updateDoc(_id: string, _value: string) {
+  //   let doc = this.afs.collection('options', ref => ref.where('id', '==', _id));
+  //   doc.snapshotChanges().subscribe((res: any) => {
+  //     let id = res[0].payload.doc.id;
+  //     this.afs.collection('options').doc(id).update({rating: _value});
+  //   });
+  // }
   //get all companies
   getAllCompanies(){
     //return this.afs.collection('/Companies').snapshotChanges();

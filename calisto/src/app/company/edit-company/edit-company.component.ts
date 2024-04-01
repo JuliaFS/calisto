@@ -56,7 +56,7 @@ export class EditCompanyComponent implements OnInit{
 
     this.data.update(this.companyId, data)
         .then(() => this.message = 'The company was updated successfully!')
-        .catch(err => console.log(err));
+        .catch(err => this.message = err );
         
     this.location.back();
   }
