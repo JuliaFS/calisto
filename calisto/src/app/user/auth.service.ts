@@ -16,36 +16,20 @@ export class AuthService {
   //login method
   login(email: string, password: string){
     return this.fireAuth.signInWithEmailAndPassword(email, password);
-    // .then((res) => {
-    //   localStorage.setItem('token', 'true');
-    //   localStorage.setItem('userId', JSON.stringify(res.user?.uid));
-
-    //   //console.log('from auth service: ' + JSON.stringify(res.user));
-
-    //   if(res.user?.emailVerified == true){
-    //     this.location.back();
-    //     this.router.navigate(['/home']);
-    //   } else {
-    //     this.router.navigate(['/auth/verify-email']);
-    //   }
-    // }, err => {
-    //   //alert(err.message);
-    //   this.message = err.message;
-    //   this.router.navigate(['/auth/login']);
-    // })
   }
 
     //register method
     register(email: string, password: string, rePassword: string){
-      this.fireAuth.createUserWithEmailAndPassword(email, password).then((res) => {
-        localStorage.setItem('token', 'true');
-        alert('register succesfull');
-        this.router.navigate(['/home']);
-        this.sendEmailForVerification(res.user);
-      }, err => {
-        alert('register error: ' + err.message);
-        this.router.navigate(['/auth/register']);
-      })
+      return this.fireAuth.createUserWithEmailAndPassword(email, password);
+      // .then((res) => {
+      //   localStorage.setItem('token', 'true');
+      //   alert('register succesfull');
+      //   this.router.navigate(['/home']);
+      //   this.sendEmailForVerification(res.user);
+      // }, err => {
+      //   console.log('register error: ' + err.message);
+      //   this.router.navigate(['/auth/register']);
+      // })
     }
 
     //working with 
@@ -72,7 +56,8 @@ export class AuthService {
 
     //forgot password
     forgotPassword(email: string){
-      this.fireAuth.sendPasswordResetEmail(email).then(() => {
+      this.fireAuth.sendPasswordResetEmail(email)
+      .then(() => {
         this.router.navigate(['/verify-email']);
       }, err => {
         alert('Reset password wrong' + err.message);
@@ -81,11 +66,12 @@ export class AuthService {
 
     //email verification
     sendEmailForVerification(user : any){
-      user.sendEmailVerification().then((res : any ) => {
-        this.router.navigate(['/verify-email']);
-      }, (err : any ) => {
-        alert('Problem with email verification: ' + err.message );
-      })
+      return user.sendEmailVerification();
+      // .then((res : any ) => {
+      //   this.router.navigate(['/verify-email']);
+      // }, (err : any ) => {
+      //   alert('Problem with email verification: ' + err.message );
+      // })
     }
 
     //sign in with google

@@ -4,6 +4,7 @@ import { emailValidator } from 'src/app/shared/utils/email-validator';
 import { matchPasswordsValidator } from 'src/app/shared/utils/match-passwords-validator';
 import { AuthService } from '../auth.service';
 import { EMAIL_DOMAINS } from 'src/app/constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +12,7 @@ import { EMAIL_DOMAINS } from 'src/app/constants';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  serverMessage : string = '';
   form = this.fb.group({
     //username: ['', [Validators.required, Validators.minLength(5)]],
     email: ['', [Validators.required, emailValidator(EMAIL_DOMAINS)]],
@@ -33,7 +35,7 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-   // private router: Router
+    private router: Router
   ) {}
 
   register(): void {
@@ -46,27 +48,20 @@ export class RegisterComponent {
       passGroup: { password, rePassword } = {},
     } = this.form.value;
 
-    this.auth.register(email!, password!, rePassword!);
+    this.auth.register(email!, password!, rePassword!).then((res) => {
+      localStorage.setItem('token', 'true');
+      //alert('register succesfull');
+      this.router.navigate(['/home']);
+      this.auth.sendEmailForVerification(res.user).then((res : any ) => {
+        this.router.navigate(['/verify-email']);
+      }, (err : any ) => {
+        this.serverMessage = err.message;
+        console.log('Problem with email verification: ' + err.message );
+      });
+    }, err => {
+      this.serverMessage = err.message;
+      console.log('register error: ' + err.message);
+      this.router.navigate(['/auth/register']);
+    });
   }
-  // email: string = '';
-  // password: string = '';
-
-  //constructor(private auth: AuthService){}
-
-  // register(){
-  //   if(!this.email){
-  //     alert('Fill email!');
-  //     return;
-  //   }
-
-  //   if(!this.password){
-  //     alert('Fill password!');
-  //     return;
-  //   }
-
-  //   this.auth.register(this.email, this.password);
-  //   this.email = '';
-  //   this.password = '';
-    
-  // }
 }

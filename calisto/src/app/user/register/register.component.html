@@ -64,6 +64,11 @@
 
         </ng-container>
         <button>Register</button>
+        <ng-container *ngIf="serverMessage!=''">
+            <p class="error">
+              {{serverMessage}}
+            </p>
+          </ng-container>
         <div>
             <a href="/auth/login">Alreay have Account?</a>
         </div>
