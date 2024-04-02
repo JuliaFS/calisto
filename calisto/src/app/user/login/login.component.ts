@@ -31,6 +31,7 @@ export class LoginComponent {
         //console.log('from auth service: ' + JSON.stringify(res.user));
   
         if(res.user?.emailVerified == true){
+          //this.serverMessage = 'Succesfully log in!';
           this.location.back();
           this.router.navigate(['/home']);
         } else {
@@ -38,7 +39,8 @@ export class LoginComponent {
         }
       }, err => {
         //alert(err.message);
-        this.serverMessage = err.message;
+        console.log(err.message);
+        this.serverMessage = 'Pls check your email and password or such user do not exist!';
         this.router.navigate(['/auth/login']);
       });
   }
