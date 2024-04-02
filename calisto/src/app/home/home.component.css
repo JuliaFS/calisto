@@ -1,0 +1,42 @@
+.home-container{
+    text-align: center;
+    color: #4257a2; 
+    background-image: url('./assets/financial-graphic.png'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.home-container h2{
+    font-weight: bold;
+    display: inline-block;
+    padding: 3% 0 1% 0;
+}
+.top-container{
+    border: 1px solid #4257a2;
+    padding: 3%;
+}
+.top-firms{
+    display: flex;
+    gap: 4%;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-name{
+    border-bottom: 2px solid #4257a2;
+    display: inline-block;
+    font-weight: bold;
+}
+
+/*.top-container a{
+    padding: 12px 5px 12px 10px;
+    width: 50%;
+    background-color: #4257a2;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0.8em 0em;
+    border: none;
+    cursor: pointer;
+}*/

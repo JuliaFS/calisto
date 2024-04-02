@@ -29,8 +29,7 @@ import { NgbRating } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     CompanyRoutingModule,
     SharedModule,
-    NgbRating
-
+    NgbRating,
   ]
 })
 export class CompanyModule { }

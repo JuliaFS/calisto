@@ -31,14 +31,20 @@ constructor(private data: DataService){}
       next: (firms : any) => {
         this.company = firms.map((e : any) => {
                const data = e.payload.doc.data();
-          //     data.id = e.payload.doc.id;
+               console.log()
+              data.id = e.payload.doc.id;
                //console.log(data);
               setTimeout(() => {
                 this.isLoading = false;
               }, 1000)
                return data;
         })
-
+        this.company.sort((a, b) => b.working_capital - a.working_capital);
+        console.log(this.company);
+        //this.company.splice(0, 3);
+        console.log(this.company);
+        this.company = this.company.splice(0, 3);
+        console.log('after splice: ' + this.company)
 
 
         //console.log('firms: ' + firms)
@@ -55,12 +61,6 @@ constructor(private data: DataService){}
       this.serverMessage = err.message;
     },
   });
-
-
-    this.company.sort((a, b) => b.working_capital - a.working_capital);
-    console.log(this.company);
-    //this.company.splice(0, 3);
-    console.log(this.company);
   }
 
 }

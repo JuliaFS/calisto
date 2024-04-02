@@ -1,11 +1,14 @@
 <!--<app-company-list />-->
 <div *ngIf="isLoading">
-    <app-loader />
   </div>
-<section>
-    <h2>Our last 3 entered companies....</h2>
-    <section *ngFor="">
-
+<section class="home-container">
+    <h2>Our 3 companiest with largest working capital....</h2>
+    <section class="top-firms">
+      <div class="top-container" *ngFor="let c of company">
+          <p class="top-name">{{c.name}}</p>
+          <p>{{c.working_capital}}</p>
+          <a routerLink="/company/company-details/{{c.id}}">Details</a>
+      </div>
     </section>
 <section>
 

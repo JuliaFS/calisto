@@ -7,8 +7,9 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserRoutingModule } from './user-routing.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { AngularFirestoreCollectionGroup } from '@angular/fire/compat/firestore';
 import { SharedModule } from '../shared/shared.module';
+//import { AngularFirestoreCollectionGroup } from '@angular/fire/compat/firestore';
+//import { SharedModule } from '../shared/shared.module';
 
 
 

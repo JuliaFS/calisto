@@ -7,10 +7,10 @@ import { EmailDirective } from './validators/email.directive';
 
 @NgModule({
   declarations: [
-   //LoaderComponent,
+    LoaderComponent,
     EmailDirective,
   ],
-  imports: [CommonModule, RouterModule, SharedModule],
+  imports: [CommonModule, RouterModule],
   exports: [
     LoaderComponent,
     EmailDirective,
