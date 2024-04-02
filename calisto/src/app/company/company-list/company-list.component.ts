@@ -42,7 +42,7 @@ export class CompanyListComponent implements OnInit, OnDestroy {
         //console.log(data);
         setTimeout(() => {
           this.isLoading = false;
-        }, 1500)
+        }, 1000)
         return data;
       })
     }, err => {

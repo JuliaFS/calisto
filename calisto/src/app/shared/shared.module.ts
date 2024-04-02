@@ -3,15 +3,14 @@ import { CommonModule } from '@angular/common';
 import { LoaderComponent } from './loader/loader.component';
 import { RouterModule } from '@angular/router';
 import { EmailDirective } from './validators/email.directive';
-import { matchPasswordsValidator } from './utils/match-passwords-validator';
 //import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
-    LoaderComponent,
+   //LoaderComponent,
     EmailDirective,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, SharedModule],
   exports: [
     LoaderComponent,
     EmailDirective,

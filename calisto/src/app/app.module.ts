@@ -17,6 +17,9 @@ import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { CoreModule } from './core/core.module';
+//import { LoaderComponent } from './shared/loader/loader.component';
+import { SharedModule } from './shared/shared.module';
 
 //import { AuthenticateComponent } from './authenticate/authenticate/authenticate.component';
 
@@ -26,6 +29,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     // LoginComponent,
     // RegisterComponent,
     HomeComponent,
+    //LoaderComponent,
     // ForgotPasswordComponent,
     // VerifyEmailComponent,
     HeaderComponent,
@@ -41,6 +45,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

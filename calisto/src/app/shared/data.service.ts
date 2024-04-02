@@ -15,44 +15,13 @@ export class DataService {
     
     return this.afs.collection('/Companies').add(company);
   }
-
-  //getOne company
-  //getOneCompany(company: Company){
-    //ts.afs.doc('/Companies/' + company.id).get();
-    // console.log('in data servise company.id: ' + company.id);
-    // this.afs.doc('/Companies/' + company.id).valueChanges().subscribe(data => {
-    //   console.log(data);
-    // });
-
-    // this.afs.collection('/Companies').snapshotChanges().subscribe((data) => {
-    //   this.data.map(e => {
-    //     return {id: e.payload.doc.id };
-    //   })
-      
-      // hospitalsArray = data.map(e => {
-      //   return { id: e.payload.doc.id, location: e.payload.doc.data()["location"], number: e.payload.doc.data()["phone"], name: e.payload.doc.data()["name"]}
-      // })
-  //})
-//}
-
   getCompanyById(id : string){
     return this.afs.collection('Companies').doc(id).valueChanges();
   }
 
   getOwnerUid(id: any){
-    // this.userService.get(fireuser.uid).snapshotChanges()),
-    //     map(document => document.payload.data().isAdmin) 
-   // return this.afs.collection('Companies').doc(id).valueChanges();
    return this.afs.collection('Companies').doc(id).snapshotChanges();
   }
-
-  // ownerUid(): Observable<string> {
-  //   return this.afs.user$
-  //     .pipe(
-  //       switchMap(fireuser => this.userService.get(fireuser.uid).snapshotChanges()),
-  //         map(document => document.payload.data().isAdmin) 
-  //     )
-  // }
 
   //!work
   // updateDoc(_id: string, _value: string) {
@@ -64,9 +33,6 @@ export class DataService {
   // }
   //get all companies
   getAllCompanies(){
-    //return this.afs.collection('/Companies').snapshotChanges();
-    //return this.afs.collection('/Companies');
-    //return this.afs.collection('Companies').snapshotChanges();
     return this.afs.collection('Companies').snapshotChanges();
     
   }

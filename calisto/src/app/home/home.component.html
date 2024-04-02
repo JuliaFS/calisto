@@ -1,2 +1,17 @@
 <!--<app-company-list />-->
-<p>home component</p>
+<div *ngIf="isLoading">
+    <app-loader />
+  </div>
+<section>
+    <h2>Our last 3 entered companies....</h2>
+    <section *ngFor="">
+
+    </section>
+<section>
+
+
+<ng-container *ngIf="serverMessage!=''">
+    <p class="error">
+      {{serverMessage}}
+    </p>
+  </ng-container>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/user/auth.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { DataService } from 'src/app/shared/data.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,14 @@ export class HeaderComponent implements OnInit {
     return localStorage.getItem('token') ? true : null;
   }
   ngOnInit(): void {
-    //console.log('islogged from header' + this.auth.isLogged)
+  //   this.data.getAllCompanies().subscribe({
+  //     next: () => {
+
+  //   }, 
+  //   error: () => {
+      
+  //   },
+  // });
   }
   
   //based on user, but i can't remove it
