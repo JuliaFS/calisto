@@ -1,0 +1,33 @@
+.page-404{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #4257a2;
+    margin-top: 3%;
+}
+
+.page-404 h1{
+    /*color: rgb(183, 169, 145);*/
+}
+
+.links{
+    display: flex;
+}
+.page-404 p {
+    font-weight: bold;
+}
+.page-404 a{
+    display: inline-block;
+    border-right: 1px solid white;
+    text-decoration: none;
+    padding: 2.6%;
+    margin-bottom: 7%;
+    font-weight: bold;
+    color: white;
+    background-color: #4257a2;
+
+    &:hover{
+        background-color: antiquewhite;
+    }
+}

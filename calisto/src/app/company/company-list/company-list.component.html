@@ -2,6 +2,10 @@
   <app-loader />
 </div>
 
+<ng-container *ngIf="message!=''">
+  <p>{{ message }}</p>
+</ng-container>
+
 <div *ngIf="!isLoading" class="table-container">
   <table>
     <thead>

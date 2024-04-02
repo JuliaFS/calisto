@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/user/auth.service';
   templateUrl: './company-list.component.html',
   styleUrls: ['./company-list.component.css']
 })
-export class CompanyListComponent implements OnInit {
+export class CompanyListComponent implements OnInit, OnDestroy {
   companyList : Company[] = [];
   isLoading: boolean = true;
 
@@ -26,12 +26,12 @@ export class CompanyListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllCompanies();
-    
+
   }
 
-  // ngOnDestroy(): void {
-  //   setTimeout
-  // }
+  ngOnDestroy(): void {
+    clearTimeout;
+  }
 
   getAllCompanies(){
 
