@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
     return localStorage.getItem('token') ? true : null;
   }
   ngOnInit(): void {
-    console.log('islogged from header' + this.auth.isLogged)
+    //console.log('islogged from header' + this.auth.isLogged)
   }
   
   //based on user, but i can't remove it

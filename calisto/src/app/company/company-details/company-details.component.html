@@ -1,4 +1,5 @@
-<section class="details-container">
+<div class="container">
+  <section class="details-container">
   <header>
     <h2>Company Details</h2>
   </header>
@@ -33,12 +34,20 @@
     <p>{{ message }}</p>
   </ng-container>
 </section>
-<section class="private-section">
-  <h2>This is private section.</h2>
-  <p>If you want to see more details for companies pls 
+
+<div class="private-section">
+<section>
+  <h2>This is section just for registered users.</h2>
+  <p *ngIf="!isLogged">If you want to see more details for companies pls 
     <span>
       <a routerLink="/auth/login">Login</a>
     </span> or
-    <span><a routerLink="/auth/register">Register</a></span>here!
+    <span><a routerLink="/auth/register">Register</a></span> here!
   </p>
 </section>
+<section *ngIf="isLogged">
+  <h2>Angular Star Rating Example</h2>
+    <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating>
+  </section>
+</div>
+</div>

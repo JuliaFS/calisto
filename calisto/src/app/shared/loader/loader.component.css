@@ -1,5 +1,8 @@
+
+
 .loader {
     width: 80px;
+    margin: 10% auto;
     aspect-ratio: 2;
     --c: linear-gradient(#ffd412 25%, #abd406 0 50%, #ff821c 0 75%, #ffd412 0);
     background: var(--c), var(--c), var(--c), var(--c);

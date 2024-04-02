@@ -1,4 +1,8 @@
-<div class="table-container">
+<div *ngIf="isLoading">
+  <app-loader />
+</div>
+
+<div *ngIf="!isLoading" class="table-container">
   <table>
     <thead>
       <tr>

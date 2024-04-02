@@ -1,7 +1,7 @@
 <div class="add-form-container">
   <form class="add-form">
     <h2>Add Company</h2>
-    <div class="form-control input-container">
+    <div class="form-control add-container">
       <label for="name">Company Name:</label>
       <input 
         type="text" 
@@ -22,7 +22,7 @@
       </ng-container>
     </div>
 
-    <div class="form-control input-container">
+    <div class="form-control add-container">
       <label for="country">Country:</label>
       <input 
         type="text" 
@@ -43,7 +43,7 @@
       </ng-container>
     </div>
 
-    <div class="form-control input-container">
+    <div class="form-control add-container">
       <label for="working_capital">Working capital:</label>
       <input 
         type="text" 
@@ -63,7 +63,7 @@
         </p>
       </ng-container>
     </div>
-    <div class="form-control input-container">
+    <div class="form-control add-container">
       <label for="invested_capital">Invested capital:</label>
       <input 
         type="text" 
@@ -83,7 +83,7 @@
         </p>
       </ng-container>
     </div>
-    <button (click)="addCompany()">Add company</button>
+    <button class="add-company" (click)="addCompany()">Add company</button>
     <ng-container *ngIf="message!=''">
       <p>{{ message }}</p>
     </ng-container>

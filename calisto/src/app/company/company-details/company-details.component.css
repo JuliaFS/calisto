@@ -1,4 +1,10 @@
-section{
+.container{
+    display: flex;
+    gap: 4%;
+    padding: 1%;
+}
+
+.private-section{
     display: flex;
     flex-direction: column;
 }
@@ -80,4 +86,13 @@ tr:first-of-type td:last-of-type{
 
 .edit{
     color: #4257a2;
+}
+
+.private-section span{
+    font-weight: bold;
+}
+
+ngb-rating {
+    color: #FFC107;
+    font-size: 50px;
 }

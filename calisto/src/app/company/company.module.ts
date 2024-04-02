@@ -10,6 +10,7 @@ import { CompanyDetailsComponent } from './company-details/company-details.compo
 import { EditCompanyComponent } from './edit-company/edit-company.component';
 import { ModalComponent } from '../core/modal/modal.component';
 import { SharedModule } from '../shared/shared.module';
+import { NgbRating } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -27,7 +28,9 @@ import { SharedModule } from '../shared/shared.module';
     RouterModule,
     FormsModule,
     CompanyRoutingModule,
-    SharedModule
+    SharedModule,
+    NgbRating
+
   ]
 })
 export class CompanyModule { }
