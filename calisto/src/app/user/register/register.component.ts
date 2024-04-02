@@ -50,10 +50,12 @@ export class RegisterComponent {
 
     this.auth.register(email!, password!, rePassword!).then((res) => {
       localStorage.setItem('token', 'true');
+      localStorage.setItem('userId', JSON.stringify(res.user?.uid));
+
       //alert('register succesfull');
       this.router.navigate(['/home']);
       this.auth.sendEmailForVerification(res.user).then((res : any ) => {
-        this.router.navigate(['/verify-email']);
+        this.router.navigate(['/auth/verify-email']);
       }, (err : any ) => {
         this.serverMessage = err.message;
         console.log('Problem with email verification: ' + err.message );
