@@ -56,12 +56,12 @@ export class AuthService {
 
     //forgot password
     forgotPassword(email: string){
-      this.fireAuth.sendPasswordResetEmail(email)
-      .then(() => {
-        this.router.navigate(['/verify-email']);
-      }, err => {
-        alert('Reset password wrong' + err.message);
-      })
+      return this.fireAuth.sendPasswordResetEmail(email);
+      // .then(() => {
+      //   this.router.navigate(['/auth/verify-email']);
+      // }, err => {
+      //   console.log('Reset password wrong' + err.message);
+      // })
     }
 
     //email verification

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { EMAIL_DOMAINS } from 'src/app/constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password',
@@ -11,11 +12,20 @@ export class ForgotPasswordComponent {
 
   email : string = '';
   domains = EMAIL_DOMAINS;
+  serverMessage : string = '';
 
-  constructor( private auth: AuthService ) {}
+  constructor( private auth: AuthService, private router: Router ) {}
 
   forgotPassword(){
-    this.auth.forgotPassword(this.email);
+    this.auth.forgotPassword(this.email)
+    .then((res : any ) => {
+      this.serverMessage = 'Email was sent';
+        this.router.navigate(['/auth/verify-email']);
+
+      }, (err : any ) => {
+        console.log('Problem with email verification: ' + err.message );
+        this.serverMessage = err.message;
+      })
     this.email = '';
   }
 }

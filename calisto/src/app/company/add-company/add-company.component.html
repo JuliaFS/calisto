@@ -1,7 +1,7 @@
-<div class="add-form-container">
-  <form class="add-form">
+<div class="form-container">
+  <form class="add-form" #form="ngForm" (ngSubmit)="addCompany(form)">
     <h2>Add Company</h2>
-    <div class="form-control add-container">
+    <div class="input-container">
       <label for="name">Company Name:</label>
       <input 
         type="text" 
@@ -22,7 +22,7 @@
       </ng-container>
     </div>
 
-    <div class="form-control add-container">
+    <div class="input-container">
       <label for="country">Country:</label>
       <input 
         type="text" 
@@ -43,10 +43,10 @@
       </ng-container>
     </div>
 
-    <div class="form-control add-container">
+    <div class="input-container">
       <label for="working_capital">Working capital:</label>
       <input 
-        type="text" 
+        type="number" 
         id="working_capital" 
         name="working_capital" 
         ngModel
@@ -63,10 +63,10 @@
         </p>
       </ng-container>
     </div>
-    <div class="form-control add-container">
+    <div class="input-container">
       <label for="invested_capital">Invested capital:</label>
       <input 
-        type="text" 
+        type="number" 
         id="invested_capital" 
         name="invested_capital" 
         ngModel
@@ -83,7 +83,13 @@
         </p>
       </ng-container>
     </div>
-    <button class="add-company" (click)="addCompany()">Add company</button>
+    <!--<button class="add-company" (click)="addCompany()">Add company</button>-->
+    <button class="add-company">Add company</button>
+    <ng-container *ngIf="serverMessage!=''">
+      <p class="error">
+        {{serverMessage}}
+      </p>
+    </ng-container>
     <ng-container *ngIf="message!=''">
       <p>{{ message }}</p>
     </ng-container>
