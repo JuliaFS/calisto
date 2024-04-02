@@ -15,7 +15,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
-import { ErrorComponent } from './core/error/error.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -31,7 +30,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     // VerifyEmailComponent,
     HeaderComponent,
     FooterComponent,
-    ErrorComponent,
     NotFoundComponent,
     //AuthenticateComponent
   ],

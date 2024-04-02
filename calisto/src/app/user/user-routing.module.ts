@@ -9,7 +9,7 @@ import { AuthActivate } from '../guards/auth.activate';
 import { authState } from '@angular/fire/auth';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, canActivate: [AuthActivate] }, //canActivate: [authState], canActivate: [AuthActivate]
+  { path: 'login', component: LoginComponent }, //canActivate: [authState], canActivate: [AuthActivate]
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'verify-email', component: VerifyEmailComponent },

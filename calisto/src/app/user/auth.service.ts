@@ -12,24 +12,27 @@ export class AuthService {
 
   constructor(private fireAuth: AngularFireAuth, private router: Router, private location: Location) { }
 
+  message : string = '';
   //login method
   login(email: string, password: string){
-    this.fireAuth.signInWithEmailAndPassword(email, password).then((res) => {
-      localStorage.setItem('token', 'true');
-      localStorage.setItem('userId', JSON.stringify(res.user?.uid));
+    return this.fireAuth.signInWithEmailAndPassword(email, password);
+    // .then((res) => {
+    //   localStorage.setItem('token', 'true');
+    //   localStorage.setItem('userId', JSON.stringify(res.user?.uid));
 
-      //console.log('from auth service: ' + JSON.stringify(res.user));
+    //   //console.log('from auth service: ' + JSON.stringify(res.user));
 
-      if(res.user?.emailVerified == true){
-        this.location.back();
-        this.router.navigate(['/home']);
-      } else {
-        this.router.navigate(['/auth/verify-email']);
-      }
-    }, err => {
-      alert(err.message);
-      this.router.navigate(['/auth/login']);
-    })
+    //   if(res.user?.emailVerified == true){
+    //     this.location.back();
+    //     this.router.navigate(['/home']);
+    //   } else {
+    //     this.router.navigate(['/auth/verify-email']);
+    //   }
+    // }, err => {
+    //   //alert(err.message);
+    //   this.message = err.message;
+    //   this.router.navigate(['/auth/login']);
+    // })
   }
 
     //register method

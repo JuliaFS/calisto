@@ -4,6 +4,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { RouterModule } from '@angular/router';
 import { EmailDirective } from './validators/email.directive';
 import { matchPasswordsValidator } from './utils/match-passwords-validator';
+//import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
