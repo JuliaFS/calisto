@@ -21,7 +21,7 @@ import { NgbRating } from '@ng-bootstrap/ng-bootstrap';
     DeleteCompanyComponent, 
     CompanyDetailsComponent, 
     EditCompanyComponent,
-    ModalComponent
+    ModalComponent,
   ],
   imports: [
     CommonModule,

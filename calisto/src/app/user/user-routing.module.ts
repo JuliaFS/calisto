@@ -9,11 +9,11 @@ import { AuthActivate } from '../guards/auth.activate';
 import { authState } from '@angular/fire/auth';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent }, //canActivate: [authState], canActivate: [AuthActivate]
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'verify-email', component: VerifyEmailComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'login', component: LoginComponent, canActivate: [AuthActivate] }, 
+  { path: 'register', component: RegisterComponent, canActivate: [AuthActivate] },
+  //{ path: 'profile', component: ProfileComponent },
+  { path: 'verify-email', component: VerifyEmailComponent, canActivate: [AuthActivate]  },
+  { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [AuthActivate]  },
 ];
 
 @NgModule({
