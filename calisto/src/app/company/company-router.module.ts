@@ -5,7 +5,7 @@ import { CompanyListComponent } from './company-list/company-list.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { EditCompanyComponent } from './edit-company/edit-company.component';
 import { AuthActivate } from '../guards/auth.activate';
-import { AuthGuard } from '../guards/authFn.activate';
+import { AuthGuard } from '../guards/add-companyFn.activate';
 
 const routes: Routes = [
   { path: 'add-company', component: AddCompanyComponent, canActivate: [AuthGuard]},
