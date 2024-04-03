@@ -41,12 +41,12 @@ export class AuthActivate implements CanActivate {
   constructor(private auth: AuthService, private router: Router) {}
 
   canActivate(): boolean {
-    if (this.auth.isLogged) {
+    if (!this.auth.isLoggedUser) {
+      //this.router.navigate(['/company/company-list']);
       return true;
     } else {
-      this.router.navigate(['/auth/login']);
+      this.router.navigate(['/home']);
       return false;
     }
-    return false;
   }
 }

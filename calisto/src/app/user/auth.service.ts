@@ -97,6 +97,16 @@ export class AuthService {
       //return !!user;
     }
 
+    get isLoggedUser(): boolean{
+      if(localStorage.getItem('userId')){
+        console.log('in localstorage get item true')
+        return true;
+      } else {
+        console.log('in localstorage get item false')
+        return false;
+      }
+    }
+
     userUid(){
       const auth = getAuth();
       const user = auth.currentUser;

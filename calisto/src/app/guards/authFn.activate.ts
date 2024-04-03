@@ -20,7 +20,7 @@ export const FormAuthGuard: CanActivateFn = (
     | UrlTree=> {
   
     return inject(AuthService).isLogged
-      ? true
-      : inject(Router).createUrlTree(['/company/company-list']);
+      ? inject(Router).createUrlTree(['/auth/register'])
+      : true;
   
   };
