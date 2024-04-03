@@ -40,21 +40,17 @@ The owner of the company can:
      - delete existing company implemented with modal.
 Any logged in user can:
  - create new company: "/company/add-company"
- 
+
 🔨 Used technologies
 HTML
 CSS
 Angular
 Firestore database
 
-firebase link: https://galeriq-guyndogan.web.app/
+firebase link: https://calisto-26845.web.app/
+
 npm run build (to catch if have changes)
 firebase deploy (add changes to firebase)
-Resources
-Use local image files
-Person images are my own pictures
-Pictures in gallery are my own (pictures of my little painters)
-The design is my own
 
 ## Further help
 
