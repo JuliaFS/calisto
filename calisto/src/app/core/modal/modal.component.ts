@@ -13,13 +13,8 @@ export class ModalComponent{
   @Input() message : string = ''; 
   @Output() clickEvent = new EventEmitter();
   isOpen : boolean = false;
-  //isClicked : boolean = false;
 
   constructor(private act: ActivatedRoute, private render: Renderer2, private router: Router, private location: Location){}
-
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   this.refreshStatus();
-  // }
 
   firmAction(){
   this.isOpen = true;
@@ -31,14 +26,5 @@ export class ModalComponent{
     this.isOpen = false;
     console.log(this.companyId)
     this.router.navigate([`/company/company-list`]);
-    //this.location.onUrlChange;
-    //this.router.navigate(['/company/company-list']);
-    //this.location.back();
-    //this.render.addClass($event.target,"hidden");
-
   }
-
-  // refreshStatus(){
-  //   this.router.navigate(['/company/company-details/{{companyId}}']);
-  // }
 }

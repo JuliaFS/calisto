@@ -9,18 +9,7 @@ import { HomeComponent } from './home/home.component';
 // import { CompanyListComponent } from './company/company-list/company-list.component';
 import { ErrorComponent } from './core/error/error.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { AuthActivate } from './guards/auth.activate';
 
-// const routes: Routes = [
-//   { path: '', pathMatch: 'full', redirectTo: '/home' },
-//   { path: 'home', component: HomeComponent },
-//   { path: 'login', component: LoginComponent },
-//   { path: 'register', component: RegisterComponent },
-//   { path: 'verify-email', component: VerifyEmailComponent },
-//   { path: 'forgot-password', component: ForgotPasswordComponent },
-//   { path: 'add-company', component: AddCompanyComponent },
-//   { path: 'company-list', component: CompanyListComponent },
-// ];
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -44,9 +33,3 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-// const routes: Routes = [
-//   { path: '', pathMatch: 'full', redirectTo: '/home' },
-//   { path: 'home', component: HomeComponent },
-//   { path: '**', redirectTo: '/404' },
-//   { path: '404', component: ErrorComponent },
-// ];

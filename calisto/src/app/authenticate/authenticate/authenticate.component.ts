@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthActivate } from 'src/app/guards/auth.activate';
 import { AuthService } from 'src/app/user/auth.service';
 //import { UserService } from '../user/user.service';
 
@@ -26,5 +27,4 @@ export class AuthenticateComponent implements OnInit {
      });
   }
 }
-
 canActivate: [AuthActivate]

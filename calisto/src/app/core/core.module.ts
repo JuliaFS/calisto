@@ -4,14 +4,10 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ModalComponent } from './modal/modal.component';
-//import { ErrorComponent } from './error/error.component';
-
-
 
 @NgModule({
   declarations: [
     ModalComponent,
-    //ErrorComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +17,6 @@ import { ModalComponent } from './modal/modal.component';
     HeaderComponent,
     FooterComponent,
     ModalComponent,
-    //ErrorComponent
   ]
 })
 export class CoreModule { }

@@ -39,14 +39,3 @@ export class DataService {
   }
 }
 
-
-
-// >>>>>>>>>>>>>>>
-// constructor(private firestore:AngularFirestore){}
-// hospitalsArray=[];
-// ngOnInit(){
-//     this.firestore.collection("hospitals").snapshotChanges().subscribe((data) => {
-//       this.hospitalsArray = data.map(e => {
-//         return { id: e.payload.doc.id, location: e.payload.doc.data()["location"], number: e.payload.doc.data()["phone"], name: e.payload.doc.data()["name"]}
-//       })
-// }

@@ -14,9 +14,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   serverMessage : string = '';
   form = this.fb.group({
-    //username: ['', [Validators.required, Validators.minLength(5)]],
     email: ['', [Validators.required, emailValidator(EMAIL_DOMAINS)]],
-    //tel: [''],
     passGroup: this.fb.group(
       {
         password: ['', [Validators.required]],
@@ -52,17 +50,15 @@ export class RegisterComponent {
       localStorage.setItem('token', 'true');
       localStorage.setItem('userId', JSON.stringify(res.user?.uid));
 
-      //alert('register succesfull');
       this.router.navigate(['/home']);
+      
       this.auth.sendEmailForVerification(res.user).then((res : any ) => {
         this.router.navigate(['/auth/verify-email']);
       }, (err : any ) => {
         this.serverMessage = err.message;
-        console.log('Problem with email verification: ' + err.message );
       });
     }, err => {
       this.serverMessage = err.message;
-      console.log('register error: ' + err.message);
       this.router.navigate(['/auth/register']);
     });
   }

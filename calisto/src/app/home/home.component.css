@@ -5,9 +5,15 @@
     background-image: url('https://raw.githubusercontent.com/JuliaFS/calisto/main/calisto/src/assets/financial-graphic.jpg'); 
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.8;
 }
 
+.home-container::before{
+        content: ""; /* Create a pseudo-element */
+        position: absolute; /* Position the pseudo-element absolutely */
+        top: 0;
+        left: 0;
+        opacity: 0.7; /* Apply opacity to the pseudo-element */
+      }
 
 .home-container h2{
     font-weight: bold;
@@ -15,11 +21,12 @@
     padding: 3% 0 2% 0;
     margin-bottom: 4%;
     border-bottom: 3px dotted #4257a2;
+    z-index: 1;
 }
 .top-container{
-    border: 1px solid #4257a2;
+    border: 3px solid #4257a2;
     padding: 6%;
-    background-color: white;
+    background-color: aliceblue;
 }
 .top-firms{
     display: flex;
@@ -29,19 +36,7 @@
 }
 
 .top-name{
-    border-bottom: 2px solid #4257a2;
+    border-bottom: 2px dotted #4257a2;
     display: inline-block;
     font-weight: bold;
 }
-
-/*.top-container a{
-    padding: 12px 5px 12px 10px;
-    width: 50%;
-    background-color: #4257a2;
-    color: white;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin: 0.8em 0em;
-    border: none;
-    cursor: pointer;
-}*/

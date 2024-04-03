@@ -42,7 +42,6 @@ export class AuthActivate implements CanActivate {
 
   canActivate(): boolean {
     if (!this.auth.isLoggedUser) {
-      //this.router.navigate(['/company/company-list']);
       return true;
     } else {
       this.router.navigate(['/home']);

@@ -28,18 +28,13 @@ export class LoginComponent {
         localStorage.setItem('token', 'true');
         localStorage.setItem('userId', JSON.stringify(res.user?.uid));
   
-        //console.log('from auth service: ' + JSON.stringify(res.user));
-  
         if(res.user?.emailVerified == true){
-          //this.serverMessage = 'Succesfully log in!';
           this.location.back();
           this.router.navigate(['/home']);
         } else {
           this.router.navigate(['/auth/verify-email']);
         }
       }, err => {
-        //alert(err.message);
-        console.log(err.message);
         this.serverMessage = 'Pls check your email and password or such user do not exist!';
         this.router.navigate(['/auth/login']);
       });

@@ -62,6 +62,12 @@
     border: none;
     cursor: pointer;
 }
+
+.login button{
+    color: #4257a2;
+    background-color: aliceblue;
+}
+
 .login div a{
     color: black;
 }

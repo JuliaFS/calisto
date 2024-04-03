@@ -23,7 +23,6 @@ export class ForgotPasswordComponent {
         this.router.navigate(['/auth/verify-email']);
 
       }, (err : any ) => {
-        console.log('Problem with email verification: ' + err.message );
         this.serverMessage = err.message;
       })
     this.email = '';

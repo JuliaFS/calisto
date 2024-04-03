@@ -16,7 +16,7 @@ export class CompanyDetailsComponent implements OnInit, OnChanges {
   ownerId : any = '';
   message : string = '';
   isClickedDelete : boolean = false;
-  starRating = 0; 
+  starRating : number = 2; 
   isLogged : boolean = this.auth.isLogged;
 
   currentCompany : any = {};

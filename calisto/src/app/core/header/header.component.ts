@@ -9,27 +9,12 @@ import { DataService } from 'src/app/shared/data.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   constructor(private auth: AuthService, private router: Router) {};
 
   get isLogged() : boolean | null{
     return localStorage.getItem('token') ? true : null;
   }
-  ngOnInit(): void {
-  //   this.data.getAllCompanies().subscribe({
-  //     next: () => {
-
-  //   }, 
-  //   error: () => {
-      
-  //   },
-  // });
-  }
-  
-  //based on user, but i can't remove it
-  // isLogged(){
-  //   return this.auth.isLoggedIn();
-  // }
 
   logout(){
     this.auth.logout();

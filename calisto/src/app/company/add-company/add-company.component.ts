@@ -36,25 +36,13 @@ export class AddCompanyComponent {
   constructor(private data: DataService, private router: Router, private auth: AuthService){}
 
   addCompany(form: NgForm){
-    console.log(form.value);
 
     if (form.invalid) {
       this.serverMessage = 'Pls fill all fields corectly!';
-      console.log('inside form invalid');
       return;
     }
 
     const { name, country, working_capital, invested_capital } = form.value;
-    console.log('name: ' + name);
-    console.log('country: ' + country)
-    console.log('working capital' + working_capital)
-    console.log('invested capita;' + invested_capital)
-
-    // const { email, password } = form.value;
-    // if(this.name == '' || this.country == '' || this.working_capital < 0 || this.invested_capital < 0){
-    //   this.message = 'Fill all input fields corectly!';
-    //   return;
-    // }
 
     this.companyObj.id = '';
     this.companyObj.name = name;

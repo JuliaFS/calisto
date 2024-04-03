@@ -63,6 +63,11 @@
     cursor: pointer;
 }
 
+.register button{
+    color: #4257a2;
+    background-color: aliceblue;
+}
+
 .register div a{
     color: black;
 }

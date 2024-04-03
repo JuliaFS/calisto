@@ -8,16 +8,17 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Project details:
 
-This site is something like companies database defense of the Angular Softuni Course as part of the Front-End Module. This project is an Angular App for companies database.
+This site is something like companies list defense of the Angular Softuni Course as part of the Front-End Module. This project is an Angular App for companies list.
 
 Database
-Using the Softuni Practice server to store data and display the data on the pages.
+Using Firestore database. Implemented login, login with google, register, verify email and forgot password.
 
 Navigation
 User are able to navigate through various links like:
 
 Home,
 Companies functionality
+
 The application contains two parts:
 
 Public part
@@ -36,9 +37,10 @@ Private part (logged in users only)
     - create company "/company/add-company"
 The owner of the company can:
     - edit existing company: "/company/edit-company/:companyId"
-    - delete existing company
+     - delete existing company implemented with modal.
 Any logged in user can:
  - create new company: "/company/add-company"
+ 
 🔨 Used technologies
 HTML
 CSS

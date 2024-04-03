@@ -7,10 +7,6 @@
     margin-top: 3%;
 }
 
-.page-404 h1{
-    /*color: rgb(183, 169, 145);*/
-}
-
 .links{
     display: flex;
 }
@@ -28,6 +24,6 @@
     background-color: #4257a2;
 
     &:hover{
-        background-color: antiquewhite;
+        background-color: aliceblue;
     }
 }
