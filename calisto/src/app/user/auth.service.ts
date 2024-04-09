@@ -99,10 +99,10 @@ export class AuthService {
 
     get isLoggedUser(): boolean{
       if(localStorage.getItem('userId')){
-        console.log('in localstorage get item true')
+        //console.log('in localstorage get item true')
         return true;
       } else {
-        console.log('in localstorage get item false')
+        //console.log('in localstorage get item false')
         return false;
       }
     }
