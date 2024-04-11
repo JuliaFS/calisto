@@ -4,6 +4,24 @@
             <h2>Register</h2>
         </div>
         <div class="input-container">
+            <label for="username">Username</label>
+            <input type="text" 
+            id="username" 
+            name="username" 
+            placeholder="Enter username here..." 
+            formControlName="username">
+
+            <ng-container *ngIf="form.get('username')?.touched">
+                <p class="error" *ngIf="form.get('username')?.errors?.['required']">
+                    Username is required!
+                </p>
+
+                <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
+                    Username must be at least 2 characters!
+                </p>
+            </ng-container>
+        </div>
+        <div class="input-container">
             <label for="email">Email</label>
             <input type="email" 
             id="email" 

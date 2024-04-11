@@ -16,15 +16,15 @@ export class ForgotPasswordComponent {
 
   constructor( private auth: AuthService, private router: Router ) {}
 
-  forgotPassword(){
-    this.auth.forgotPassword(this.email)
-    .then((res : any ) => {
-      this.serverMessage = 'Email was sent';
-        this.router.navigate(['/auth/verify-email']);
+   forgotPassword(){
+  //   this.auth.forgotPassword(this.email)
+  //   .then((res : any ) => {
+  //     this.serverMessage = 'Email was sent';
+  //       this.router.navigate(['/auth/verify-email']);
 
-      }, (err : any ) => {
-        this.serverMessage = err.message;
-      })
-    this.email = '';
-  }
+  //     }, (err : any ) => {
+  //       this.serverMessage = err.message;
+  //     })
+  //   this.email = '';
+   }
 }

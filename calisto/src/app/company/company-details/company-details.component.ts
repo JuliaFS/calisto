@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/user/auth.service';
 })
 export class CompanyDetailsComponent implements OnInit, OnChanges {
   companyId : any = this.act.snapshot.paramMap.get('id');
-  userId : string = this.auth.userUid();
+  //userId : string = this.auth.userUid();
   isOwner : boolean = false;
   ownerId : any = '';
   message : string = '';

@@ -25,7 +25,7 @@ export class AddCompanyComponent {
   serverMessage : string = '';
 
   //ownerVar = localStorage.getItem('userId') as string;
-  ownerVar : string = this.auth.userUid();
+  //ownerVar : string = this.auth.userUid();
 
   // id : string = '';
   // name : string = '';
@@ -50,7 +50,7 @@ export class AddCompanyComponent {
     this.companyObj.working_capital = working_capital;
     this.companyObj.invested_capital = invested_capital;
 
-    this.companyObj.owner = this.ownerVar;
+    //this.companyObj.owner = this.ownerVar;
     
     this.data.addCompany(this.companyObj)
     .then(() => {

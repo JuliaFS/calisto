@@ -24,20 +24,20 @@ export class LoginComponent {
   
       const { email, password } = form.value;
     
-      this.auth.login(email, password).then((res) => {
-        localStorage.setItem('token', 'true');
-        localStorage.setItem('userId', JSON.stringify(res.user?.uid));
+      // this.auth.login(email, password).then((res) => {
+      //   localStorage.setItem('token', 'true');
+      //   localStorage.setItem('userId', JSON.stringify(res.user?.uid));
   
-        if(res.user?.emailVerified == true){
-          this.location.back();
-          this.router.navigate(['/home']);
-        } else {
-          this.router.navigate(['/auth/verify-email']);
-        }
-      }, err => {
-        this.serverMessage = 'Pls check your email and password or such user do not exist!';
-        this.router.navigate(['/auth/login']);
-      });
+      //   if(res.user?.emailVerified == true){
+      //     this.location.back();
+      //     this.router.navigate(['/home']);
+      //   } else {
+      //     this.router.navigate(['/auth/verify-email']);
+      //   }
+      // }, err => {
+      //   this.serverMessage = 'Pls check your email and password or such user do not exist!';
+      //   this.router.navigate(['/auth/login']);
+      // });
   }
 
   signInWithGoogle(){
