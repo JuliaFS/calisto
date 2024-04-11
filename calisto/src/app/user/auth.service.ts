@@ -1,22 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
-//import { AngularFireAuth } from '@angular/fire/compat/auth';
-
-// import {
-//   Auth,
-//   signInWithEmailAndPassword,
-//   authState,
-//   createUserWithEmailAndPassword,
-//   updateProfile,
-//   UserInfo,
-//   UserCredential,
-//   GoogleAuthProvider,
-// } from '@angular/fire/auth';
-
 //import { getAuth, User } from "firebase/auth"; //!!!TO DO
-import { Location } from '@angular/common';
+
 
 import { Observable, Subscription, catchError, from, map, tap } from 'rxjs';
 //import { UserForAuth } from '../model/userForAuth';
@@ -58,7 +47,7 @@ export class AuthService {
   //login method
   // ----
    login(email: string, password: string){
-  //   return this.fireAuth.signInWithEmailAndPassword(email, password);
+     return this.afAuth.signInWithEmailAndPassword(email, password);
    }
   // ----
 
@@ -78,51 +67,14 @@ export class AuthService {
 
     //register method
     register( email: string, password: string ){
-
-
-      // username: string;
-      // email: string;
-      // password: string;
-      // id: string;
-      // .post<UserForAuth>('/api/register', {
-      //   username,
-      //   email,
-      //   tel,
-      //   password,
-      //   rePassword,
-      // })
-      // .pipe(tap((user) => this.user$$.next(user)));
-
       // -------
       // signUp(email: string, password: string): Observable<UserCredential> {
       //   return from(createUserWithEmailAndPassword(this.auth, email, password));
       // }
-
       // -----
-
-      //return from(createUserWithEmailAndPassword(this.auth, email, password));
-
       //return from(createUserWithEmailAndPassword(this.auth, email, password));
       return this.afAuth.createUserWithEmailAndPassword(email, password);
 
-
-
-
-
-
-
-
-
-
-      // .then((res) => {
-      //   localStorage.setItem('token', 'true');
-      //   alert('register succesfull');
-      //   this.router.navigate(['/home']);
-      //   this.sendEmailForVerification(res.user);
-      // }, err => {
-      //   console.log('register error: ' + err.message);
-      //   this.router.navigate(['/auth/register']);
-      // })
     }
 
     //working with 

@@ -3,30 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-//...............
-// import { provideFirebaseApp, getApp, initializeApp  } from '@angular/fire/app';
 
-// import { provideAuth, getAuth } from '@angular/fire/auth';
-// import { FIREBASE_OPTIONS } from '@angular/fire/compat';
-//...............
-//import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-
-// import { getStorage, provideStorage } from '@angular/fire/storage';
-
-//-----------
 import { AngularFireModule } from '@angular/fire/compat';
-//import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-
-//-----------
-
-
-// import { FirebaseApp, FirebaseAppModule, initializeApp, provideFirebaseApp } from '@angular/fire/app';
-// import { provideAuth, getAuth } from '@angular/fire/auth';
-
- //import { provideAuth, getAuth } from '@angular/fire/auth';
- //import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { environment } from 'src/environments/environment.development';
 
@@ -37,7 +16,6 @@ import { FooterComponent } from './core/footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './shared/shared.module';
-import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 
 @NgModule({
@@ -54,9 +32,8 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/f
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
      //provideAuth(() => getAuth()),
 
-    
+     //AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
     //AngularFireAuthModule,
     //AngularFirestoreModule.enablePersistence(),
 
