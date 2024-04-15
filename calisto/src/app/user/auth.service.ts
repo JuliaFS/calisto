@@ -26,15 +26,16 @@ export class AuthService {
     //   console.log(!!this.user)
     //   return !!this.user;
     // }
-    get isLogged(): boolean {
-      // console.log(!!this.user)
-      // return !!this.user;
-      const user = this.afAuth.currentUser;
-      console.log(user);
-      const isLoggedIn = !!user;
-      console.log('isloggedin: ' + isLoggedIn)
-      return isLoggedIn;
-    }
+    // get isLogged(): boolean {
+    //   // console.log(!!this.user)
+    //   // return !!this.user;
+    //   const user = this.afAuth.currentUser;
+    //   console.log(user);
+    //   const isLoggedIn = !!user;
+    //   console.log('isloggedin: ' + isLoggedIn)
+    //   return isLoggedIn;
+    // }
+    //user = this.afAuth.currentUser;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -45,6 +46,16 @@ export class AuthService {
       // });
     }
 
+
+
+    // get isLogged(): boolean {
+    //   // console.log(!!this.user)
+    //   // return !!this.user;
+    //   // const isLoggedIn = !!this.user;
+    //   // console.log('isloggedin: ' + isLoggedIn)
+    //   // return isLoggedIn;
+    //   return true;
+    // }
   
   // coerce to boolean
 
@@ -166,22 +177,21 @@ export class AuthService {
     //   })
      }
 
-     //get isLogged(): boolean {
-    //   const auth = this.afAuth.authState;
-    //  // const auth = getAuth();
-    //   auth.subscribe({
-    //     next: user => {
-    //       if(user){
-    //         return true;
-    //       } else {
-    //         return false;
-    //       }
-    //     },
-        //error: err => console.error('Observable emitted an error: ' + err),
-      //});
-     // return false;
-      //return !!user;
-    // }
+     get isLogged(): boolean {
+      const auth = this.afAuth.authState;
+     // const auth = getAuth();
+      auth.subscribe({
+        next: user => {
+          if(user){
+            return true;
+          } else {
+            return false;
+          }
+        },
+        error: err => console.error('Observable emitted an error: ' + err),
+      });
+     return false;
+    }
 
       get isLoggedUser(): boolean{
       if(localStorage.getItem('userId')){
