@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { EMAIL_DOMAINS } from 'src/app/constants';
 import { Router } from '@angular/router';
+import { catchError, tap, throwError } from 'rxjs';
+import { FirebaseError } from 'firebase/app';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-forgot-password',
@@ -10,21 +13,31 @@ import { Router } from '@angular/router';
 })
 export class ForgotPasswordComponent {
 
-  email : string = '';
   domains = EMAIL_DOMAINS;
   serverMessage : string = '';
 
   constructor( private auth: AuthService, private router: Router ) {}
 
-   forgotPassword(){
-  //   this.auth.forgotPassword(this.email)
-  //   .then((res : any ) => {
-  //     this.serverMessage = 'Email was sent';
-  //       this.router.navigate(['/auth/verify-email']);
+   forgotPassword(form: NgForm){
+    if (form.invalid) {
+      return;
+    }
 
-  //     }, (err : any ) => {
-  //       this.serverMessage = err.message;
-  //     })
-  //   this.email = '';
-   }
+    const { email } = form.value;
+
+     this.auth.forgotPassword(email)
+     .subscribe({
+      next: () => {
+        this.router.navigate(['/home']);
+        this.serverMessage = "You can check your mail for recovering password.";
+      },
+      error: error => {
+        this.serverMessage = error.message;
+        // this.snackBar.open(error.message, "OK", {
+        //   duration: 5000
+        // });
+      }
+    })
+  }
+
 }

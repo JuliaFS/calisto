@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+//import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { environment } from 'src/environments/environment.development';
 
@@ -34,7 +36,7 @@ import { SharedModule } from './shared/shared.module';
 
      //AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
-    //AngularFireAuthModule,
+    AngularFireAuthModule,
     //AngularFirestoreModule.enablePersistence(),
 
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -42,6 +44,7 @@ import { SharedModule } from './shared/shared.module';
     // provideFirestore(() => getFirestore()),
 
     //AngularFirestoreModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule,

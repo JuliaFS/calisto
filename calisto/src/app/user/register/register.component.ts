@@ -53,87 +53,14 @@ export class RegisterComponent {
           passGroup: { password, rePassword } = {},
         } = this.form.value;
 
-        this.auth
-  .register(email!, password!)
-      this.auth.register(email!, password!).then((res) => {
-       localStorage.setItem('token', 'true');
-       localStorage.setItem('userId', JSON.stringify(res.user?.uid));
-       console.log(res);
-       console.log('res.user: ' + res.user)
-
-      this.router.navigate(['/home']);
-      
-      // this.auth.sendEmailForVerification(res.user).then((res : any ) => {
-      //   this.router.navigate(['/auth/verify-email']);
-      // }, (err : any ) => {
-      //   this.serverMessage = err.message;
-      // });
-    }, err => {
-      this.serverMessage = err.message;
-      this.router.navigate(['/auth/register']);
-    });
-    // .pipe(
-    //       tap(user => console.log(user)),
-    //       // switchMap(( user ) =>
-          
-    //       //    //this.userS.addUser({ uid, email, displayName: username })
-    //       // )//,
-    //       // this.toast.observe({
-    //       //   success: 'Congrats! You are all signed up',
-    //       //   loading: 'Signing up...',
-    //       //   error: ({ message }) => `${message}`,
-    //       // })
-    //     )
-    //     .subscribe(() => {
-    //       this.router.navigate(['/home']);
-    //     });
-
-        // addUser(user: ProfileUser): Observable<void> {
-        //   const ref = doc(this.firestore, 'users', user.uid);
-        //   return from(setDoc(ref, user));
-        // }
-    
-        // this.auth.register(email!, password!, rePassword!).then((res) => {
-        //   localStorage.setItem('token', 'true');
-        //   localStorage.setItem('userId', JSON.stringify(res.user?.uid));
-    
-        //   this.router.navigate(['/home']);
-          
-        //   this.auth.sendEmailForVerification(res.user).then((res : any ) => {
-        //     this.router.navigate(['/auth/verify-email']);
-        //   }, (err : any ) => {
-        //     this.serverMessage = err.message;
-        //   });
-        // }, err => {
-        //   this.serverMessage = err.message;
-        //   this.router.navigate(['/auth/register']);
-        // });
+    this.auth
+        .register(username!, email!, password!, rePassword!)
+        .subscribe({
+          next: () => {
+          console.log('test')
+          this.router.navigate(['/home']);
+        },
+        error: (err) => this.serverMessage = err.message
+      });
   }
-
-  // register(): void {
-  //   if (this.form.invalid) {
-  //     return;
-  //   }
-
-  //   const {
-  //     email,
-  //     passGroup: { password, rePassword } = {},
-  //   } = this.form.value;
-
-  //   this.auth.register(email!, password!, rePassword!).then((res) => {
-  //     localStorage.setItem('token', 'true');
-  //     localStorage.setItem('userId', JSON.stringify(res.user?.uid));
-
-  //     this.router.navigate(['/home']);
-      
-  //     this.auth.sendEmailForVerification(res.user).then((res : any ) => {
-  //       this.router.navigate(['/auth/verify-email']);
-  //     }, (err : any ) => {
-  //       this.serverMessage = err.message;
-  //     });
-  //   }, err => {
-  //     this.serverMessage = err.message;
-  //     this.router.navigate(['/auth/register']);
-  //   });
-  // }
 }

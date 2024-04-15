@@ -1,18 +1,3 @@
-.container{
-    width: 40%;
-    border: 2px solid #4257a2; 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 5% auto;
-    border-radius: 5px;
-    box-shadow: 0px 0px 18px 0px rgb(84, 70, 133), -7px -7px 10px #6f71740f;
-    background: linear-gradient(90deg, rgb(88, 73, 180), rgba(169, 187, 239, 0.346));
-    font-family: Helvetica, Arial, sans-serif;
-    padding: 3.5% 0;
-}
-
 .login{
     display: flex;
     flex-direction: column;
@@ -20,15 +5,6 @@
     align-items: center;
     gap: 0.7em;
     width: 100%;
-}
-
-.login h2{
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 1.8em;
-    border-bottom: 2px solid #4257a2;
-    margin-bottom: 0.5em;
-    color: white;
 }
 
 .input-container{

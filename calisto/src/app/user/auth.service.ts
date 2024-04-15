@@ -7,12 +7,16 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 //import { getAuth, User } from "firebase/auth"; //!!!TO DO
 
 
-import { Observable, Subscription, catchError, from, map, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, catchError, from, map, tap, throwError } from 'rxjs';
 //import { UserForAuth } from '../model/userForAuth';
 
 
 //import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserForAuth } from '../model/userForAuth';
+import { FirebaseError } from 'firebase/app';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment'; 
+import { User } from '../model/user';
 //import { Auth, createUserWithEmailAndPassword, UserCredential } from '@angular/fire/auth';
 
 @Injectable({
@@ -20,62 +24,63 @@ import { UserForAuth } from '../model/userForAuth';
 })
 
 export class AuthService {
-  //currentUser$ = authState(this.auth);
+      private user$$ = new BehaviorSubject<UserForAuth | undefined>(undefined);
+     private user$ = this.user$$.asObservable();
+   
+     user: UserForAuth | undefined;
+     USER_KEY = '[user]';
+   
+     userSubscription: Subscription;
 
-  // private user$$ = new BehaviorSubject<UserForAuth | undefined>(undefined);
-  // private user$ = this.user$$.asObservable();
-
-  // user: UserForAuth | undefined;
-  // USER_KEY = '[user]';
-
-  // userSubscription: Subscription;
+     get isLogged(): boolean {
+      console.log(!!this.user)
+      return !!this.user;
+    }
 
 
   constructor(
-   private afAuth: AngularFireAuth,
-    //public auth: Auth, 
+    private afAuth: AngularFireAuth,
+    private http: HttpClient,
     private router: Router, 
     private location: Location) {
-      // this.userSubscription = this.user$.subscribe((user) => {
-      //   this.user = user;
-      // });
-     }
-
-  //message : string = '';
-
-
-  //login method
-  // ----
-   login(email: string, password: string){
-     return this.afAuth.signInWithEmailAndPassword(email, password);
-   }
-  // ----
-
-  // register(email: string, password: string): Observable<User> | null{
-  //   return from(this.fireAuth.createUserWithEmailAndPassword(email, password))
-  //     .pipe(
-  //       map(credential => credential.user),
-  //       tap(user => {
-  //         console.log('signed up with email and password succesfully, user:', user);
-  //       }),
-  //       catchError((error, obs) => {
-  //         console.error('signup with email and password failed, error:', error);
-  //         return obs;
-  //       })
-  //     );
-  // }
-
-    //register method
-    register( email: string, password: string ){
-      // -------
-      // signUp(email: string, password: string): Observable<UserCredential> {
-      //   return from(createUserWithEmailAndPassword(this.auth, email, password));
-      // }
-      // -----
-      //return from(createUserWithEmailAndPassword(this.auth, email, password));
-      return this.afAuth.createUserWithEmailAndPassword(email, password);
-
+      this.userSubscription = this.user$.subscribe((user) => {
+        this.user = user;
+      });
     }
+
+  login(email: string, password: string) {
+    return this.http.post<UserForAuth>
+    (`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebase.apiKey}`, { email, password, returnSecureToken: true })
+      .pipe(
+        tap(user => console.log(user)),
+        tap((user) => this.user$$.next(user)),
+        tap(user => console.log(user))
+      );
+  }
+
+register(
+  username: string,
+  email: string,
+  password: string,
+  rePassword: string
+) {
+  return this.http
+    .post<UserForAuth>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebase.apiKey}`, {
+      username,
+      email,
+      password,
+      rePassword,
+      returnSecureToken: true
+    })
+    .pipe(
+      //tap(user => console.log('before' + user)),
+      tap((user) => this.user$$.next(user)),
+      //tap(user => console.log(user))
+      )
+}
+
+
+        
 
     //working with 
     // isLoggedIn(){
@@ -88,28 +93,44 @@ export class AuthService {
     //   });
     // }
 
-    // ------------
-    // //sign out
-     logout(){
-       this.afAuth.signOut().then((res) => {
-         localStorage.removeItem('token');
-         localStorage.removeItem('userId');
-         this.router.navigate(['/home']);
-       }, err => {
-         alert(err.message);
-       })
-     }
-    // ---------
+    //sign out
+    // logout(): Observable<any> {
+    //   return from(this.afAuth.signOut());
+    // }
+    logout() {
+      return this.http
+        .post(`https://identitytoolkit.googleapis.com/v1/accounts:signOut?key=${environment.firebase.apiKey}`, {})
+        .pipe(tap(() => this.user$$.next(undefined)));
+    }
 
     // //forgot password
-     forgotPassword(email: string){
-    //   return this.fireAuth.sendPasswordResetEmail(email);
-    //   // .then(() => {
-    //   //   this.router.navigate(['/auth/verify-email']);
-    //   // }, err => {
-    //   //   console.log('Reset password wrong' + err.message);
-    //   // })
-     }
+    //forgotPassword(email: string): Observable<any> {
+    //   return from(this.afAuth.sendPasswordResetEmail(email))
+    //   .pipe(
+    //     catchError((error: FirebaseError) => 
+    //       throwError(() => new Error(this.translateFirebaseErrorMessage(error)))
+    //     )
+    //   )
+    // }
+
+     forgotPassword(email: string): Observable<void> {
+      return from(this.afAuth.sendPasswordResetEmail(email))
+      .pipe(
+        catchError((error: FirebaseError) => 
+          throwError(() => new Error(this.translateFirebaseErrorMessage(error)))
+        )
+      )
+    }
+
+    private translateFirebaseErrorMessage({code, message}: FirebaseError) {
+      if (code === "auth/user-not-found") {
+        return "User not found.";
+      }
+      if (code === "auth/invalid-email") {
+        return "User not found.";
+      }
+      return message;
+    }
 
     // //email verification
      sendEmailForVerification(user : any){
@@ -131,7 +152,7 @@ export class AuthService {
     //   })
      }
 
-     get isLogged(): boolean {
+     //get isLogged(): boolean {
     //   const auth = this.afAuth.authState;
     //  // const auth = getAuth();
     //   auth.subscribe({
@@ -144,22 +165,23 @@ export class AuthService {
     //     },
         //error: err => console.error('Observable emitted an error: ' + err),
       //});
-      return false;
+     // return false;
       //return !!user;
-     }
+    // }
 
-     get isLoggedUser(): boolean{
+      get isLoggedUser(): boolean{
       if(localStorage.getItem('userId')){
         console.log('in localstorage get item true')
         return true;
       } else {
         console.log('in localstorage get item false')
        return false;
-     }
+      }
+    }
       
      //....better method
     //  return this.afAuth.currentUser !== null;
-      }
+     // }
 
      
     //  //....................................
@@ -184,4 +206,8 @@ export class AuthService {
     //     // No user is signed in.
     //   }
      }
+
+     ngOnDestroy(): void {
+      this.userSubscription.unsubscribe();
+    }
 }

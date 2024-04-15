@@ -10,15 +10,33 @@ import { DataService } from 'src/app/shared/data.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  constructor(private auth: AuthService, private router: Router) {};
+  constructor(public auth: AuthService, private router: Router) {};
 
-  get isLogged() : boolean | null{
-    return localStorage.getItem('token') ? true : null;
+  // get isLogged() : boolean | null{
+  //   return localStorage.getItem('token') ? true : null;
+  // }
+
+  // logout(){
+  //   this.auth.logout();
+  // }
+
+  get isLoggedIn(): boolean {
+    return this.auth.isLogged;
   }
 
-  logout(){
-    this.auth.logout();
+  get username(): string {
+    return this.auth.user?.username || '';
   }
 
+  logout() {
+    this.auth.logout().subscribe({
+      next: () => {
+        this.router.navigate(['/home']);
+      },
+      error: () => {
+        this.router.navigate(['/auth/login']);
+      },
+    });
+  }
   
 }
