@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 
 import { Observable, catchError, from, map, tap, throwError } from 'rxjs';
 
 import { FirebaseError } from 'firebase/app';
+import { User } from '../model/user';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -78,6 +79,7 @@ export class AuthService {
 
   register(email: string, password: string): Observable<any>{
     return from(this.afAuth.createUserWithEmailAndPassword(email, password)).pipe(
+      tap(user => console.log(user)),
       catchError((error: FirebaseError) => 
         throwError(() => new Error(this.translateFirebaseErrorMessage(error)))
       )
