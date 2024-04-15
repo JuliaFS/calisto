@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { EMAIL_DOMAINS } from 'src/app/constants';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,7 @@ export class LoginComponent {
   
       const { email, password } = form.value;
     
-      this.auth.login(email!, password! ).subscribe({
+      this.auth.login(email, password ).subscribe({
       next: () => {
         this.router.navigate(['/home']);
       },

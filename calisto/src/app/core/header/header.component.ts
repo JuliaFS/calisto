@@ -24,9 +24,9 @@ export class HeaderComponent {
     return this.auth.isLogged;
   }
 
-  get username(): string {
-    return this.auth.user?.username || '';
-  }
+  // get username(): string {
+  //   return this.auth.user?.username || '';
+  // }
 
   logout() {
     this.auth.logout().subscribe({

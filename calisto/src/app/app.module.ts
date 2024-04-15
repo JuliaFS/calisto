@@ -44,7 +44,7 @@ import { SharedModule } from './shared/shared.module';
     // provideFirestore(() => getFirestore()),
 
     //AngularFirestoreModule,
-    HttpClientModule,
+    //HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule,

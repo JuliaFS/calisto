@@ -14,7 +14,7 @@ import { BehaviorSubject, Observable, Subscription, catchError, from, map, tap, 
 //import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserForAuth } from '../model/userForAuth';
 import { FirebaseError } from 'firebase/app';
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment'; 
 import { User } from '../model/user';
 //import { Auth, createUserWithEmailAndPassword, UserCredential } from '@angular/fire/auth';
@@ -24,60 +24,87 @@ import { User } from '../model/user';
 })
 
 export class AuthService {
-      private user$$ = new BehaviorSubject<UserForAuth | undefined>(undefined);
-     private user$ = this.user$$.asObservable();
+    //   private user$$ = new BehaviorSubject<UserForAuth | undefined>(undefined);
+    //  private user$ = this.user$$.asObservable();
    
-     user: UserForAuth | undefined;
-     USER_KEY = '[user]';
+    //  user: UserForAuth | undefined;
+    //  USER_KEY = '[user]';
    
-     userSubscription: Subscription;
+    //  userSubscription: Subscription;
 
-     get isLogged(): boolean {
-      console.log(!!this.user)
-      return !!this.user;
-    }
-
+    //  get isLogged(): boolean {
+    //   console.log(!!this.user)
+    //   return !!this.user;
+    // }
+    
 
   constructor(
     private afAuth: AngularFireAuth,
-    private http: HttpClient,
+    //private http: HttpClient,
     private router: Router, 
     private location: Location) {
-      this.userSubscription = this.user$.subscribe((user) => {
-        this.user = user;
-      });
+      // this.userSubscription = this.user$.subscribe((user) => {
+      //   this.user = user;
+      // });
     }
 
-  login(email: string, password: string) {
-    return this.http.post<UserForAuth>
-    (`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebase.apiKey}`, { email, password, returnSecureToken: true })
-      .pipe(
-        tap(user => console.log(user)),
-        tap((user) => this.user$$.next(user)),
-        tap(user => console.log(user))
-      );
+  
+  // coerce to boolean
+
+     get isLogged(): boolean {
+      // console.log(!!this.user)
+      // return !!this.user;
+      const user = this.afAuth.currentUser;
+      console.log(user);
+      const isLoggedIn = !!user;
+      console.log('isloggedin: ' + isLoggedIn)
+      return isLoggedIn;
+    }
+
+  // login(email: string, password: string) {
+  //   return this.http.post<UserForAuth>
+  //   (`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebase.apiKey}`, { email, password, returnSecureToken: true })
+  //     .pipe(
+  //       tap(user => console.log(user)),
+  //       tap((user) => this.user$$.next(user)),
+  //       tap(user => console.log(user))
+  //     );
+  // }
+  login(email: string, password: string): Observable<any>{
+    return from(this.afAuth.signInWithEmailAndPassword(email, password)).pipe(
+      catchError((error: FirebaseError) => 
+        throwError(() => new Error(this.translateFirebaseErrorMessage(error)))
+      )
+    );
   }
 
-register(
-  username: string,
-  email: string,
-  password: string,
-  rePassword: string
-) {
-  return this.http
-    .post<UserForAuth>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebase.apiKey}`, {
-      username,
-      email,
-      password,
-      rePassword,
-      returnSecureToken: true
-    })
-    .pipe(
-      //tap(user => console.log('before' + user)),
-      tap((user) => this.user$$.next(user)),
-      //tap(user => console.log(user))
+  register(email: string, password: string): Observable<any>{
+    return from(this.afAuth.createUserWithEmailAndPassword(email, password)).pipe(
+      catchError((error: FirebaseError) => 
+        throwError(() => new Error(this.translateFirebaseErrorMessage(error)))
       )
-}
+    );
+  }
+// register(
+//   username: string,
+//   email: string,
+//   password: string,
+//   rePassword: string
+// ) {
+//   return this.http
+//     .post<UserForAuth>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebase.apiKey}`, {
+//       username,
+//       email,
+//       password,
+//       rePassword,
+//       returnSecureToken: true
+//     })
+//     .pipe(
+//       //tap(user => console.log('before' + user)),
+//       tap((user) => this.user$$.next(user)),
+//       //tap(user => console.log(user))
+//       )
+// }
 
 
         
@@ -94,14 +121,14 @@ register(
     // }
 
     //sign out
-    // logout(): Observable<any> {
-    //   return from(this.afAuth.signOut());
-    // }
-    logout() {
-      return this.http
-        .post(`https://identitytoolkit.googleapis.com/v1/accounts:signOut?key=${environment.firebase.apiKey}`, {})
-        .pipe(tap(() => this.user$$.next(undefined)));
+    logout(): Observable<any> {
+      return from(this.afAuth.signOut());
     }
+    // logout() {
+    //   return this.http
+    //     .post(`https://identitytoolkit.googleapis.com/v1/accounts:signOut?key=${environment.firebase.apiKey}`, {})
+    //     .pipe(tap(() => this.user$$.next(undefined)));
+    // }
 
     // //forgot password
     //forgotPassword(email: string): Observable<any> {
@@ -207,7 +234,7 @@ register(
     //   }
      }
 
-     ngOnDestroy(): void {
-      this.userSubscription.unsubscribe();
-    }
+    //  ngOnDestroy(): void {
+    //   this.userSubscription.unsubscribe();
+    // }
 }

@@ -6,9 +6,7 @@ import { matchPasswordsValidator } from 'src/app/shared/utils/match-passwords-va
 import { AuthService } from '../auth.service';
 import { EMAIL_DOMAINS } from 'src/app/constants';
 import { Router } from '@angular/router';
-//import { UserService } from '../user.service';
 import { switchMap, tap } from 'rxjs';
-import { user } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-register',
@@ -40,7 +38,6 @@ export class RegisterComponent {
     private fb: NonNullableFormBuilder,
     private auth: AuthService,
     private router: Router,
-    //private userS: UserService
   ) {}
 
   register(){
@@ -48,13 +45,12 @@ export class RegisterComponent {
       return;
     }
     const {
-          username,
           email,
           passGroup: { password, rePassword } = {},
         } = this.form.value;
 
     this.auth
-        .register(username!, email!, password!, rePassword!)
+        .register(email!, password!)
         .subscribe({
           next: () => {
           console.log('test')
