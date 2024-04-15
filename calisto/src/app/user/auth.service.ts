@@ -7,14 +7,13 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 //import { getAuth, User } from "firebase/auth"; //!!!TO DO
 
 
-import { BehaviorSubject, Observable, Subscription, catchError, from, map, tap, throwError } from 'rxjs';
+import { Observable, catchError, from, map, tap, throwError } from 'rxjs';
 //import { UserForAuth } from '../model/userForAuth';
 
 
 //import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserForAuth } from '../model/userForAuth';
 import { FirebaseError } from 'firebase/app';
-//import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment'; 
 import { User } from '../model/user';
 //import { Auth, createUserWithEmailAndPassword, UserCredential } from '@angular/fire/auth';
@@ -40,7 +39,6 @@ export class AuthService {
 
   constructor(
     private afAuth: AngularFireAuth,
-    //private http: HttpClient,
     private router: Router, 
     private location: Location) {
       // this.userSubscription = this.user$.subscribe((user) => {
