@@ -4,19 +4,10 @@ import { Location } from '@angular/common';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
-//import { getAuth, User } from "firebase/auth"; //!!!TO DO
-
 
 import { Observable, catchError, from, map, tap, throwError } from 'rxjs';
-//import { UserForAuth } from '../model/userForAuth';
 
-
-//import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { UserForAuth } from '../model/userForAuth';
 import { FirebaseError } from 'firebase/app';
-import { environment } from 'src/environments/environment'; 
-import { User } from '../model/user';
-//import { Auth, createUserWithEmailAndPassword, UserCredential } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +26,15 @@ export class AuthService {
     //   console.log(!!this.user)
     //   return !!this.user;
     // }
-    
+    get isLogged(): boolean {
+      // console.log(!!this.user)
+      // return !!this.user;
+      const user = this.afAuth.currentUser;
+      console.log(user);
+      const isLoggedIn = !!user;
+      console.log('isloggedin: ' + isLoggedIn)
+      return isLoggedIn;
+    }
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -48,16 +47,6 @@ export class AuthService {
 
   
   // coerce to boolean
-
-     get isLogged(): boolean {
-      // console.log(!!this.user)
-      // return !!this.user;
-      const user = this.afAuth.currentUser;
-      console.log(user);
-      const isLoggedIn = !!user;
-      console.log('isloggedin: ' + isLoggedIn)
-      return isLoggedIn;
-    }
 
   // login(email: string, password: string) {
   //   return this.http.post<UserForAuth>

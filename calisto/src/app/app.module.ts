@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-//import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { environment } from 'src/environments/environment.development';
 
@@ -42,7 +42,7 @@ import { SharedModule } from './shared/shared.module';
     //provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),
 
-    //AngularFirestoreModule,
+    AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
